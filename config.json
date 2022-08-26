@@ -5,14 +5,16 @@
             "port": "3306",
             "user": "root",
             "password": "mfux6xpj",
-            "database": "agesbec_collect"
+            "database": "agesbec_collect",
+            "table": "acessos"
         },
         "processed": {
             "host": "127.0.0.1",
             "port": "3306",
             "user": "root",
             "password": "mfux6xpj",
-            "database": "agesbec_processed"
+            "database": "agesbec_processed",
+            "table": "processados"
         }
     }
 }
