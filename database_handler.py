@@ -1,7 +1,9 @@
-import mysql.connector, json
+import mysql.connector
 
-config = json.load(open('config.json'))
-collect_db = config['databases']['collect']
+class Database():
+    def __init__(self):
+        self.collect = Mysql()
+        self.insert = Mysql()
 
 class Mysql():
     # def __init__(self) -> None:
@@ -83,6 +85,3 @@ class Mysql():
         cursor.close()
         print("Record Updated successfully ")
 
-database = Mysql()
-database.connect(collect_db)
-database.disconnect()
