@@ -1,0 +1,18 @@
+{
+    "databases": {
+        "collect": {
+            "host": "127.0.0.1",
+            "port": "3306",
+            "user": "root",
+            "password": "mfux6xpj",
+            "db": "agesbec_collect"
+        },
+        "processed": {
+            "host": "127.0.0.1",
+            "port": "3306",
+            "user": "root",
+            "password": "mfux6xpj",
+            "db": "agesbec_processed"
+        }
+    }
+}
