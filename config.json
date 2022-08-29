@@ -16,5 +16,6 @@
             "database": "agesbec_processed",
             "table": "processados"
         }
-    }
+    },
+    "timezone": "-03:00"
 }
