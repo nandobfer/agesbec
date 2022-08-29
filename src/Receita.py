@@ -8,6 +8,13 @@ class Receita():
         self.acesso = acesso
         self.saida = saida
         
+        if saida:
+            self.data = acesso.data_saida
+            self.hora = acesso.hora_saida
+        else:
+            self.data = acesso.data_entrada
+            self.hora = acesso.hora_entrada
+        
         self.buildAPIAttributes()
         
     def buildDate(self, date, _time):
@@ -17,5 +24,12 @@ class Receita():
     def buildAPIAttributes(self):
         self.tipoOperacao = 'I'
         self.idEvento = ['id Acessos']
-        self.dataHoraOcorrencia = format(datetime.now(timezone.utc).astimezone().isoformat())
-        print(self.dataHoraOcorrencia)
+        self.dataHoraOcorrencia = self.buildDate(self.data, self.hora)
+        self.dataHoraRegistro = format(datetime.now(timezone.utc).astimezone().isoformat())
+        self.contingencia = False
+        self.codigoRecinto = None # ONDE?
+        if self.saida:
+            self.direcao = 'S'
+        else:
+            self.direcao = 'E'
+        self.nome = self.acesso.nome
