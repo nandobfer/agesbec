@@ -63,7 +63,7 @@ class Mysql():
             sql = f"SELECT * FROM `{table}` WHERE 1"
 
         if ordered:
-            sql = f'{sql} ORDER BY {ordered} ASC'
+            sql = f'{sql} ORDER BY {ordered}'
 
         cursor = self.connection.cursor(buffered=True)
         cursor.execute(sql)
