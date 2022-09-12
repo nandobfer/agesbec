@@ -11,7 +11,7 @@ class Database():
         self.processed = Mysql()
 
 
-DRIVER_NAME = 'SQL SERVER'
+DRIVER_NAME = '{ODBC Driver 18 for SQL Server}'
 SERVER_NAME = sql_server_config['host']
 DATABASE_NAME = sql_server_config['database']
 USER_NAME = sql_server_config['user']
