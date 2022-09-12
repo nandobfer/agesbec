@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: reqcheq
+Version: 0.0.4
+Summary: Automatically check and install modules
+Home-page: https://github.com/nandobfer/reqcheq
+Author: nandobfer
+Author-email: nandobfer@yahoo.com.br
+Project-URL: Bug Tracker, https://github.com/nandobfer/reqcheq/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# ReqCheq
+
+### Use this module to automatically verify and install referenced modules you are using in your project. It's a script made to easy the process of first running a program in a fresh environment.
+
+## Instalation
+
+```bash
+pip install reqcheq
+```
+
+## Usage
+
+```python
+import reqcheq
+```
+
+Make a `requirements.txt` next to your main file, from which you are going to import reqcheq.
+Each line is an item. It can have 1 or 2 words.
+
+1st word: import name of the module. If install name is equal to import name, you can leave only this single word. (if you `import flask`, you should just add `flask` to your requirements.txt)
+
+2nd word: install name of the module. If your module is imported by a different name than it is installed you add the install name after the 1st word. (if you `import dotenv`, you should add `dotenv python-dotenv` to your requirements.txt)
+
+ReqCheq will then automatically try to import given modules and if it fails, will try to install it with pip (windows) or pip3 (linux).
