@@ -18,11 +18,11 @@ USER_NAME = sql_server_config['user']
 PASSWORD = sql_server_config['password']
 
 connection_string = f"""
-    DRIVER={{{DRIVER_NAME}}};
+    DRIVER={DRIVER_NAME};
     SERVER={SERVER_NAME};
     DATABASE={DATABASE_NAME};
     Trust_Connection=yes;
-    uid={USER_NAME};
-    pwd={PASSWORD};
+    UID={USER_NAME};
+    PWD={PASSWORD};
 """
 
