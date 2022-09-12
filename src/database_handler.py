@@ -24,5 +24,6 @@ connection_string = f"""
     Trust_Connection=yes;
     UID={USER_NAME};
     PWD={PASSWORD};
+    Encrypt=no
 """
 
