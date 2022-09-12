@@ -1,34 +1,34 @@
 {
     "databases": {
         "collect_acessos": {
-            "host": "127.0.0.1",
+            "host": "192.168.50.9",
             "port": "3306",
-            "user": "root",
-            "password": "mfux6xpj",
-            "database": "agesbec_collect",
-            "table": "acessos"
+            "user": "apirfb",
+            "password": "JOao@123#",
+            "database": "Receita",
+            "table": "Acessos"
         },
         "processed_acessos": {
             "host": "127.0.0.1",
             "port": "3306",
-            "user": "root",
-            "password": "mfux6xpj",
-            "database": "agesbec_processed",
-            "table": "processados"
+            "user": "suporte",
+            "password": "C4ndidato01",
+            "database": "siscomex",
+            "table": "acessos_processados"
         },
         "collect_visitantes": {
             "host": "127.0.0.1",
             "port": "3306",
-            "user": "root",
-            "password": "mfux6xpj",
+            "user": "suporte",
+            "password": "C4ndidato01",
             "database": "agesbec_processed",
             "table": "processados"
         },
         "processed_visitantes": {
             "host": "127.0.0.1",
             "port": "3306",
-            "user": "root",
-            "password": "mfux6xpj",
+            "user": "suporte",
+            "password": "C4ndidato01",
             "database": "agesbec_processed",
             "table": "processados"
         }
