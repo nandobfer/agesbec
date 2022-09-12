@@ -3,8 +3,8 @@ from datetime import datetime
 import json
 
 config = json.load(open('config.json'))
-collect_db = config['databases']['collect']
-processed_db = config['databases']['processed']
+collect_db = config['databases']['collect_acessos']
+processed_db = config['databases']['processed_acessos']
 database = Database()
 
 def printMenu():

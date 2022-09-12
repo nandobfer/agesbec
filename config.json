@@ -1,6 +1,6 @@
 {
     "databases": {
-        "collect": {
+        "collect_acessos": {
             "host": "127.0.0.1",
             "port": "3306",
             "user": "root",
@@ -8,7 +8,23 @@
             "database": "agesbec_collect",
             "table": "acessos"
         },
-        "processed": {
+        "processed_acessos": {
+            "host": "127.0.0.1",
+            "port": "3306",
+            "user": "root",
+            "password": "mfux6xpj",
+            "database": "agesbec_processed",
+            "table": "processados"
+        },
+        "collect_visitantes": {
+            "host": "127.0.0.1",
+            "port": "3306",
+            "user": "root",
+            "password": "mfux6xpj",
+            "database": "agesbec_processed",
+            "table": "processados"
+        },
+        "processed_visitantes": {
             "host": "127.0.0.1",
             "port": "3306",
             "user": "root",
