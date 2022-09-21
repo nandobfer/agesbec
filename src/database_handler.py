@@ -6,8 +6,11 @@ config = json.load(open('config.json'))
 sql_server_config = config['databases']['collect_acessos']
 
 class SqlServer():
-    def __init__(self) -> None:
+    # def __init__(self) -> None:
+
+    def connect(self, db):
         self.connection = pypyodbc.connect(connection_string)
+        
         
     def run(self, sql):
         cursor = self.connection.cursor()
