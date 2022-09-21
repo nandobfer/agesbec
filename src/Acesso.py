@@ -11,9 +11,9 @@ class Acesso():
         self.id = data['id']
         self.nome = data['nome']
         self.cpf = data['cpf'].replace('.', '').replace('-', '')
-        self.data_entrada = data['data_entrada']
+        self.data_entrada = data['data_entrada'].date()
         self.hora_entrada = data['hora_entrada']
-        self.data_saida = data['data_saida']
+        self.data_saida = data['data_saida'].date()
         self.hora_saida = data['hora_saida']
         self.saida = bool(self.data_saida)
 
