@@ -8,13 +8,13 @@ processed_db = config['databases']['processed_acessos']
 class Acesso():
     def __init__(self, data, database):
         self.database = database
-        self.id = data[0]
-        self.nome = data[1]
-        self.cpf = data[2]
-        self.data_entrada = data[3]
-        self.hora_entrada = data[4]
-        self.data_saida = data[5]
-        self.hora_saida = data[6]
+        self.id = data['id']
+        self.nome = data['nome']
+        self.cpf = data['cpf']
+        self.data_entrada = data['data_entrada']
+        self.hora_entrada = data['hora_entrada']
+        self.data_saida = data['data_saida']
+        self.hora_saida = data['hora_saida']
         self.saida = bool(self.data_saida)
 
     def isProcessed(self, saida = False):
