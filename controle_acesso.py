@@ -30,7 +30,7 @@ def collectData(saida = False):
             if not saida:
                 if not acesso.isProcessed():
                     print(acesso.data_entrada)
-                    print(len(acesso.data_entrada))
+                    print(acesso.data_entrada.date())
                     acesso.process()
                     request = Receita(acesso)
             else:
