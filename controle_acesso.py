@@ -23,7 +23,7 @@ def collectData(saida = False):
         sql = f'SELECT * FROM {config["databases"]["processed_acessos"]["table"]} ORDER BY data_{tipo} DESC, hora_{tipo} DESC LIMIT 10'
     try:
         sql = f'SELECT TOP 10 Nome FROM {config["databases"]["collect_acessos"]["table"]} ORDER BY data_{tipo} DESC, hora_{tipo} DESC'
-        acessos = database.collect.query(sql)
+        acessos = database.collect.query(sql)['results']
         print(acessos)
         for item in acessos:
             pass
