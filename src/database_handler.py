@@ -8,7 +8,7 @@ sql_server_config = config['databases']['collect_acessos']
 class SqlServer():
     # def __init__(self) -> None:
 
-    def connect(self, db):
+    def connect(self):
         self.connection = pypyodbc.connect(connection_string)
         
         

@@ -10,8 +10,8 @@ processed_db = config['databases']['processed_acessos']
 database = Database()
 
 def start():
-    database.collect.connect(collect_db)
-    database.processed.connect(processed_db)
+    database.collect.connect()
+    database.processed.connect()
     while True:
         collectData()
         collectData(saida = True)
