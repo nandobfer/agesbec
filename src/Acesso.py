@@ -40,7 +40,7 @@ class Acesso():
             sql = f'UPDATE {processed_db["table"]} SET data_saida = "{self.data_saida}", hora_saida = "{self.hora_saida}" WHERE id = {self.id}'
             print(f'processed id {self.id}, saida')
         
-        self.database.processed.run(sql, commit = True)
+        self.database.processed.run(sql)
             
 
         # ENVIAR PRA API AQUI
