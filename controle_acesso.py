@@ -14,14 +14,15 @@ def start():
     database.processed.connect()
     while True:
         collectData()
-        collectData(saida = True)
+        # collectData(saida = True)
 
 def collectData(saida = False):
     tipo = 'entrada'
     if saida:
         tipo = 'saida'
+        sql = f'SELECT * FROM {config["databases"]["processed_acessos"]["table"]} ORDER BY data_{tipo} DESC, hora_{tipo} DESC LIMIT 10'
     try:
-        sql = f'SELECT * FROM {config["databases"]["collect_acessos"]["table"]} ORDER BY data_{tipo} DESC, hora_{tipo} DESC LIMIT 10'
+        sql = f'SELECT TOP 10 * FROM {config["databases"]["collect_acessos"]["table"]} ORDER BY data_{tipo} DESC, hora_{tipo} DESC'
         acessos = database.collect.run(sql)
         for item in acessos:
             print(item)
