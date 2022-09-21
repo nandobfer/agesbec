@@ -21,7 +21,7 @@ def collectData(saida = False):
     if saida:
         tipo = 'saida'
     try:
-        sql = f'SELECT * FROM {config["databases"]["collect"]["table"]} ORDER BY data_{tipo} DESC, hora_{tipo} DESC LIMIT 10'
+        sql = f'SELECT * FROM {config["databases"]["collect_acessos"]["table"]} ORDER BY data_{tipo} DESC, hora_{tipo} DESC LIMIT 10'
         acessos = database.collect.run(sql)
         for item in acessos:
             print(item)
