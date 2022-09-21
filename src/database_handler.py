@@ -8,10 +8,10 @@ sql_server_config = config['databases']['collect_acessos']
 class Database():
     def __init__(self):
         self.collect = sqlServer.connect(connection_string)
-        self.processed = Mysql()
+        self.processed = Mysql(auth=config['databases']['collect_acessos'], login_table=None)
 
 
-DRIVER_NAME = '{ODBC Driver 18 for SQL Server}'
+DRIVER_NAME = '{ODBC Driver 17 for SQL Server}'
 SERVER_NAME = sql_server_config['host']
 DATABASE_NAME = sql_server_config['database']
 USER_NAME = sql_server_config['user']
@@ -26,4 +26,5 @@ connection_string = f"""
     PWD={PASSWORD};
     TrustServerCertificate=yes;
 """
+    # Encryption
 
