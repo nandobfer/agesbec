@@ -4,5 +4,6 @@ database = Database()
 print(database.collect)
 
 cursor = database.collect.cursor()
-data = cursor.execute('select Nome from Acessos')
+cursor.execute('select Nome from Acessos')
+data = cursor.fetchall()
 print(data)
