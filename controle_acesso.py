@@ -29,8 +29,8 @@ def collectData(saida = False):
             print(vars(acesso))
             if not saida:
                 if not acesso.isProcessed():
-                    print(acesso.cpf)
-                    print(len(acesso.cpf))
+                    print(acesso.data_entrada)
+                    print(len(acesso.data_entrada))
                     acesso.process()
                     request = Receita(acesso)
             else:
