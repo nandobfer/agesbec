@@ -8,7 +8,6 @@ processed_db = config['databases']['processed_acessos']
 class Acesso():
     def __init__(self, data, database):
         self.database = database
-        print(data)
         self.id = data['id']
         self.nome = data['nome']
         self.cpf = data['cpf'].replace('.', '').replace('-', '')
@@ -43,12 +42,15 @@ class Acesso():
             columns = '(id, nome, cpf, data_entrada, hora_entrada, data_saida, hora_saida)'
             values = (self.id, self.nome, self.cpf, self.data_entrada, self.hora_entrada, self.data_saida, self.hora_saida)
             sql = f"insert into {processed_db['table']} {columns} values ({self.id}, '{self.nome}', '{self.cpf}', '{self.data_entrada}', '{self.hora_entrada}', '{self.data_saida}', '{self.hora_saida}');"
-            print(f'processed id {self.id}, entrada')
         else:
             sql = f'UPDATE {processed_db["table"]} SET data_saida = "{self.data_saida}", hora_saida = "{self.hora_saida}" WHERE id = {self.id}'
-            print(f'processed id {self.id}, saida')
         
-        self.database.processed.run(sql)
+        try:
+            self.database.processed.run(sql)
+            print(f'processed id {self.id}, {"saida" if saida else "entrada"}')
+        except Exception as error:
+            print(error)
+            
             
 
         # ENVIAR PRA API AQUI

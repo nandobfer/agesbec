@@ -26,10 +26,8 @@ def collectData(saida = False):
         acessos = database.collect.query(sql)['results']
         for item in acessos:
             acesso = Acesso(item, database)
-            print(vars(acesso))
             if not saida:
                 if not acesso.isProcessed():
-                    print(acesso.data_entrada)
                     acesso.process()
                     request = Receita(acesso)
             else:
