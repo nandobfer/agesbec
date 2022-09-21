@@ -14,7 +14,7 @@
             "user": "suporte",
             "password": "C4ndidato01",
             "database": "siscomex",
-            "table": "acessos_processados"
+            "table": "acessos"
         },
         "collect_visitantes": {
             "host": "127.0.0.1",
