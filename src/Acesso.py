@@ -12,11 +12,18 @@ class Acesso():
         self.id = data['id']
         self.nome = data['nome']
         self.cpf = data['cpf'].replace('.', '').replace('-', '')
-        self.data_entrada = data['data_entrada'].date()
+        self.data_entrada = data['data_entrada']
         self.hora_entrada = data['hora_entrada']
-        self.data_saida = data['data_saida'].date()
+        self.data_saida = data['data_saida']
         self.hora_saida = data['hora_saida']
         self.saida = bool(self.data_saida)
+        
+        try:
+            self.data_entrada = self.data_entrada.date()
+            self.data_saida = self.data_saida.date()
+        except:
+            pass
+            
 
     def isProcessed(self, saida = False):
         tipo = 'entrada'
