@@ -24,16 +24,16 @@ def collectData(saida = False):
         sql = f'SELECT * FROM {config["databases"]["collect"]["table"]} ORDER BY data_{tipo} DESC, hora_{tipo} DESC LIMIT 10'
         acessos = database.collect.run(sql)
         for item in acessos:
-            # print(item)
-            acesso = Acesso(item, database)
-            if not saida:
-                if not acesso.isProcessed():
-                    acesso.process()
-                    request = Receita(acesso)
-            else:
-                if not acesso.isProcessed(saida = True):
-                    acesso.process(saida = True)
-                    request = Receita(acesso, saida = True)
+            print(item)
+            # acesso = Acesso(item, database)
+            # if not saida:
+            #     if not acesso.isProcessed():
+            #         acesso.process()
+            #         request = Receita(acesso)
+            # else:
+            #     if not acesso.isProcessed(saida = True):
+            #         acesso.process(saida = True)
+            #         request = Receita(acesso, saida = True)
     except KeyboardInterrupt:
         print('Encerrado pelo usuário')
         database.collect.disconnect()    
