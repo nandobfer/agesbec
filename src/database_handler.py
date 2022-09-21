@@ -17,6 +17,14 @@ class SqlServer():
         cursor.execute(sql)
         data = cursor.fetchall()
         return data
+    
+    def query(self, query_str):
+        cursor = self.connection.cursor()
+        cursor.execute(query_str)
+        return {'results':
+                [dict(zip([column[0] for column in cursor.description], row))
+                for row in cursor.fetchall()]}
+        
 class Database():
     def __init__(self):
         self.collect = SqlServer()
