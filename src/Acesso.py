@@ -10,7 +10,7 @@ class Acesso():
         self.database = database
         self.id = data['id']
         self.nome = data['nome']
-        self.cpf = data['cpf']
+        self.cpf = data['cpf'].replace('.', '').replace('-', '')
         self.data_entrada = data['data_entrada']
         self.hora_entrada = data['hora_entrada']
         self.data_saida = data['data_saida']
