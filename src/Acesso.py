@@ -47,7 +47,7 @@ class Acesso():
         
         try:
             self.database.processed.run(sql)
-            print(f'processed id {self.id}, {"saida" if saida else "entrada"}')
+            print(f'processed id {self.id}, name: {self.nome}, {"saida" if saida else "entrada"}')
         except Exception as error:
             print(error)
             
