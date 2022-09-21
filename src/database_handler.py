@@ -16,7 +16,7 @@ class SqlServer():
         return data
 class Database():
     def __init__(self):
-        self.collect = SqlServer(connection_string)
+        self.collect = SqlServer()
         self.processed = Mysql(auth=config['databases']['processed_acessos'], login_table=None)
 
 
