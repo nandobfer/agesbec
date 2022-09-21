@@ -24,8 +24,9 @@ def collectData(saida = False):
     try:
         sql = f'SELECT TOP 10 Nome FROM {config["databases"]["collect_acessos"]["table"]} ORDER BY data_{tipo} DESC, hora_{tipo} DESC'
         acessos = database.collect.query(sql)
+        print(acessos)
         for item in acessos:
-            print(item)
+            pass
             # acesso = Acesso(item, database)
             # if not saida:
             #     if not acesso.isProcessed():
