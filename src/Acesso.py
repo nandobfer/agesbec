@@ -10,13 +10,13 @@ class Acesso():
         self.database = database
         self.id = data['id']
         self.nome = data['nome']
-        self.cpf = data['cpf'].replace('.', '').replace('-', '')
+        self.cpf = data['cpf'].replace('.', '').replace('-', '') if data['cpf'] else None
         self.data_entrada = data['data_entrada']
         self.hora_entrada = data['hora_entrada']
         self.data_saida = data['data_saida']
         self.hora_saida = data['hora_saida']
         self.saida = bool(self.data_saida)
-        
+                
         try:
             self.data_entrada = self.data_entrada.date()
             self.data_saida = self.data_saida.date()
@@ -47,6 +47,7 @@ class Acesso():
         
         try:
             self.database.processed.run(sql)
+            print(datetime.now().time())
             print(f'processed id {self.id}, name: {self.nome}, {"saida" if saida else "entrada"}')
         except Exception as error:
             print(error)
