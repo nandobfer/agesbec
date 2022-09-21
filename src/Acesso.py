@@ -8,6 +8,7 @@ processed_db = config['databases']['processed_acessos']
 class Acesso():
     def __init__(self, data, database):
         self.database = database
+        print(data)
         self.id = data['id']
         self.nome = data['nome']
         self.cpf = data['cpf'].replace('.', '').replace('-', '')
