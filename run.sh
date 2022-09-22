@@ -1,2 +1,2 @@
 #!/bin/bash
-git pull && python3 controle_acesso.py
+git pull && chmod +x run.sh && python3 controle_acesso.py
