@@ -14,7 +14,7 @@ def start():
     database.processed.connect()
     while True:
         collectData()
-        # collectData(saida = True)
+        collectData(saida = True)
 
 def collectData(saida = False):
     tipo = 'entrada'
