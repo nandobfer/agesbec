@@ -29,11 +29,11 @@ def collectData(saida = False):
             if not saida:
                 if not acesso.isProcessed():
                     acesso.process()
-                    request = Receita(acesso)
+                    # request = Receita(acesso)
             else:
                 if not acesso.isProcessed(saida = True):
                     acesso.process(saida = True)
-                    request = Receita(acesso, saida = True)
+                    # request = Receita(acesso, saida = True)
     except KeyboardInterrupt:
         print('Encerrado pelo usuário')
         database.collect.disconnect()    
