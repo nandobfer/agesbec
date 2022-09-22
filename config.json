@@ -33,5 +33,6 @@
             "table": "processados"
         }
     },
-    "timezone": "-03:00"
+    "timezone": "-03:00",
+    "url": "https://gateway.apiserpro.serpro.gov.br/integra-comex-recintos-val/v1"
 }
