@@ -1,4 +1,14 @@
 {
+    "timezone": "-03:00",
+    "url": "https://gateway.apiserpro.serpro.gov.br/integra-comex-recintos-val/v1",
+    "authentication" : {
+        "key": "HKnrRYUDaydyhfO1YsyeLWptwUMa",
+        "secret": "TDe9ecUDEl1Nxu1q33cklyV5Io0a",
+        "consumer": "HKnrRYUDaydyhfO1YsyeLWptwUMa:TDe9ecUDEl1Nxu1q33cklyV5Io0a",
+        "role-type": "DEPOSIT",
+        "url": "https://tre-siscomex-sapi.estaleiro.serpro.gov.br/authenticate"
+    },
+    "recinto": "8.94.32.06-1",
     "databases": {
         "collect_acessos": {
             "host": "192.168.50.9",
@@ -32,7 +42,5 @@
             "database": "agesbec_processed",
             "table": "processados"
         }
-    },
-    "timezone": "-03:00",
-    "url": "https://gateway.apiserpro.serpro.gov.br/integra-comex-recintos-val/v1"
+    }
 }

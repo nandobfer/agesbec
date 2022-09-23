@@ -1,5 +1,5 @@
 from datetime import datetime, timezone
-import json, requests
+import json, requests, base64
 config = json.load(open('config.json'))
 
 class Mockado():
@@ -50,14 +50,45 @@ class Receita():
         data.pop('data')
         data.pop('hora')
         
-        print(json.dumps(
-            data, sort_keys=True,
-            indent=4,
-            separators=(',', ': ')
-            ))
+        token = self.getToken()
         
-        response = requests.post(url, json=data)
+        # print(json.dumps(
+        #     data, sort_keys=True,
+        #     indent=4,
+        #     separators=(',', ': ')
+        #     ))
+        
+        # response = requests.post(url, json=data)
+        # print(response.text)
+        
+    def getToken(self):
+        url = config["authentication"]["url"]
+        consumer = base64.b64encode(config["authentication"]["consumer"].encode()).decode()
+        headers = {
+            "authorization": "Basic %s" % consumer,
+            "role-type": config["authentication"]["role-type"],
+            "content-type": "application/json",
+            "Pucomex": "true"
+        }
+        data = {
+            "uri": config["url"]
+        }
+        
+        # print(headers)
+        response = requests.post(url, headers=headers, json=data)
+        print()
+        print('url')
+        print(response.request.url)
+        print()
+        print('headers')
+        print(response.request.headers)
+        print()
+        print('body')
+        print(response.request.body)
+        print()
+        print('response')
         print(response.text)
+        
         
 teste = Receita(Mockado())
 teste.request()
