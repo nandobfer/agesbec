@@ -33,7 +33,7 @@ class Receita():
         self.dataHoraOcorrencia = self.buildDate(self.data, self.hora)
         self.dataHoraRegistro = format(datetime.now(timezone.utc).astimezone().isoformat())
         self.contingencia = False
-        self.codigoRecinto = None # ONDE?
+        self.codigoRecinto = config["recinto"]
         if self.saida:
             self.direcao = 'S'
         else:
