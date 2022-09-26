@@ -20,9 +20,9 @@ def collectData():
     tipo = 'entrada'
     try:
         sql = f'SELECT TOP 1 * FROM {collect_db["table"]} ORDER BY data_{tipo} DESC, hora_{tipo} DESC'
-        acessos = database.collect.run(sql)
+        acessos = database.collect.query(sql)['results']
         for item in acessos:
-            # print(item)
+            print(item)
             visitante = Visitante(item, database)
             # if not visitante.isProcessed():
             #     visitante.process()

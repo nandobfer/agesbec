@@ -9,4 +9,3 @@ class Visitante():
     def __init__(self, data, database) -> None:
         self.database = database
         self.data = data
-        print(self.data)
