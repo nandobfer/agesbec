@@ -24,8 +24,8 @@ def collectData():
         for item in acessos:
             print(item)
             visitante = Visitante(item, database)
-            # if not visitante.isProcessed():
-            #     visitante.process()
+            if not visitante.isProcessed():
+                visitante.process()
             #     request = Receita(visitante=True)
     except KeyboardInterrupt:
         print('Encerrado pelo usuário')

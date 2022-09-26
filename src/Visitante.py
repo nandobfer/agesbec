@@ -6,8 +6,29 @@ collect_db = config['databases']['collect_acessos']
 processed_db = config['databases']['processed_acessos']
 
 class Visitante():
-    def __init__(self, data, database) -> None:
+    def __init__(self, data, database):
         self.database = database
         self.data = data
         
         self.nome = data['nome']
+        self.rg = data['rg']
+        
+    def isProcessed(self):
+        sql = f"SELECT * FROM {processed_db['table']} WHERE rg = {self.rg} ;"
+        data = self.database.processed.run(sql)
+        if data:
+            return True
+        else:
+            return False
+        
+    def process(self, saida = False):
+        columns = '(nome, rg)'
+        values = (self.nome, self.rg)
+        sql = f"insert into {processed_db['table']} {columns} values {values} ;"
+        
+        try:
+            self.database.processed.run(sql)
+            print(datetime.now().time())
+            print(f'processed visitante, name: {self.nome}, rg: {self.rg}')
+        except Exception as error:
+            print(error)
