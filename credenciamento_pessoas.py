@@ -17,7 +17,6 @@ def start():
         sleep(5)
 
 def collectData():
-    tipo = 'entrada'
     try:
         sql = f'SELECT TOP 1 * FROM {collect_db["table"]} ORDER BY codigo DESC'
         acessos = database.collect.query(sql)['results']
