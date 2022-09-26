@@ -21,7 +21,6 @@ def collectData():
         sql = f'SELECT TOP 1 * FROM {collect_db["table"]} ORDER BY codigo DESC'
         acessos = database.collect.query(sql)['results']
         for item in acessos:
-            print(item)
             visitante = Visitante(item, database)
             if not visitante.isProcessed():
                 visitante.process()
