@@ -27,20 +27,20 @@
             "table": "acessos"
         },
         "collect_visitantes": {
-            "host": "127.0.0.1",
+            "host": "192.168.50.9",
             "port": "3306",
-            "user": "suporte",
-            "password": "C4ndidato01",
-            "database": "agesbec_processed",
-            "table": "processados"
+            "user": "apirfb",
+            "password": "JOao@123#",
+            "database": "Receita",
+            "table": "CAD_VISITANTES"
         },
         "processed_visitantes": {
-            "host": "127.0.0.1",
+            "host": "192.168.50.3",
             "port": "3306",
             "user": "suporte",
             "password": "C4ndidato01",
-            "database": "agesbec_processed",
-            "table": "processados"
+            "database": "siscomex",
+            "table": "visitantes"
         }
     }
 }
