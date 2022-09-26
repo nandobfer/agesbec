@@ -6,10 +6,25 @@ config = json.load(open('config.json'))
 sql_server_config = config['databases']['collect_acessos']
 
 class SqlServer():
-    # def __init__(self) -> None:
+    def __init__(self, table:str) -> None:
+        self.DRIVER_NAME = '{ODBC Driver 17 for SQL Server}'
+        self.SERVER_NAME = config['databases'][f'collect_{table}']['host']
+        self.DATABASE_NAME = config['databases'][f'collect_{table}']['database']
+        self.USER_NAME = config['databases'][f'collect_{table}']['user']
+        self.PASSWORD = config['databases'][f'collect_{table}']['password']
+
+        self.connection_string = f"""
+            DRIVER={self.DRIVER_NAME};
+            SERVER={self.SERVER_NAME};
+            DATABASE={self.DATABASE_NAME};
+            Trust_Connection=yes;
+            UID={self.USER_NAME};
+            PWD={self.PASSWORD};
+            TrustServerCertificate=yes;
+        """
 
     def connect(self):
-        self.connection = pypyodbc.connect(connection_string)
+        self.connection = pypyodbc.connect(self.connection_string)
         
         
     def run(self, sql):
@@ -26,25 +41,9 @@ class SqlServer():
                 for row in cursor.fetchall()]}
         
 class Database():
-    def __init__(self):
-        self.collect = SqlServer()
-        self.processed = Mysql(auth=config['databases']['processed_acessos'], login_table=None)
+    def __init__(self, table:str):
+        self.collect = SqlServer(table)
+        self.processed = Mysql(auth=config['databases'][f'processed_{table}'], login_table=None)
 
-
-DRIVER_NAME = '{ODBC Driver 17 for SQL Server}'
-SERVER_NAME = sql_server_config['host']
-DATABASE_NAME = sql_server_config['database']
-USER_NAME = sql_server_config['user']
-PASSWORD = sql_server_config['password']
-
-connection_string = f"""
-    DRIVER={DRIVER_NAME};
-    SERVER={SERVER_NAME};
-    DATABASE={DATABASE_NAME};
-    Trust_Connection=yes;
-    UID={USER_NAME};
-    PWD={PASSWORD};
-    TrustServerCertificate=yes;
-"""
     # Encryption
 
