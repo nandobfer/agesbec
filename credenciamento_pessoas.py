@@ -19,7 +19,7 @@ def start():
 def collectData():
     tipo = 'entrada'
     try:
-        sql = f'SELECT TOP 1 * FROM {collect_db["table"]}'
+        sql = f'SELECT TOP 1 * FROM {collect_db["table"]} ORDER BY codigo DESC'
         acessos = database.collect.query(sql)['results']
         for item in acessos:
             print(item)
