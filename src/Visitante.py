@@ -15,7 +15,6 @@ class Visitante():
         
     def isProcessed(self):
         sql = f"SELECT * FROM {processed_db['table']} WHERE rg = '{self.rg}' ;"
-        print(sql)
         data = self.database.processed.run(sql)
         if data:
             return True
@@ -26,6 +25,7 @@ class Visitante():
         columns = '(nome, rg)'
         values = f'({self.nome}, {self.rg})'
         sql = f"insert into {processed_db['table']} {columns} values {values} ;"
+        print(sql)
         
         try:
             self.database.processed.run(sql)
