@@ -7,7 +7,7 @@ import json
 config = json.load(open('config.json'))
 collect_db = config['databases']['collect_acessos']
 processed_db = config['databases']['processed_acessos']
-database = Database()
+database = Database('acessos')
 
 def start():
     database.collect.connect()

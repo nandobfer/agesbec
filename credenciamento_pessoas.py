@@ -7,7 +7,7 @@ import json
 config = json.load(open('config.json'))
 collect_db = config['databases']['collect_visitantes']
 processed_db = config['databases']['processed_visitantes']
-database = Database()
+database = Database('visitantes')
 
 def start():
     database.collect.connect()
