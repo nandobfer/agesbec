@@ -23,7 +23,7 @@ class Visitante():
         
     def process(self, saida = False):
         columns = '(nome, rg)'
-        values = f'({self.nome}, {self.rg})'
+        values = f'("{self.nome}", "{self.rg}")'
         sql = f"insert into {processed_db['table']} {columns} values {values} ;"
         print(sql)
         
