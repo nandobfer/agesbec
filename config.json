@@ -31,7 +31,7 @@
             "port": "3306",
             "user": "apirfb",
             "password": "JOao@123#",
-            "database": "Receita",
+            "database": "DpaAcesso",
             "table": "CAD_VISITANTES"
         },
         "processed_visitantes": {
