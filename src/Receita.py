@@ -75,18 +75,7 @@ class Receita():
         }
         
         # print(headers)
-        response = requests.post(url, headers=headers, json=data)
-        print()
-        print('url')
-        print(response.request.url)
-        print()
-        print('headers')
-        print(response.request.headers)
-        print()
-        print('body')
-        print(response.request.body)
-        print()
-        print('response')
+        response = requests.post(url, headers=headers, json=data, cert=['/home/suporte/certificado/rubimar.crt', '/home/suporte/certificado/rubimar.pem'])
         print(response.text)
         
         
