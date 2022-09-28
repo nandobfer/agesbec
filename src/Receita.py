@@ -58,8 +58,8 @@ class Receita():
         #     separators=(',', ': ')
         #     ))
         
-        # response = requests.post(url, json=data)
-        # print(response.text)
+        response = requests.post(url, json=data, headers={'Authorization': f'access_token {token}'})
+        print(response.text)
         
     def getToken(self):
         url = config["authentication"]["url"]
@@ -77,8 +77,8 @@ class Receita():
         # print(headers)
         response = requests.post(url, headers=headers, json=data, cert=['/home/suporte/certificado/rubimar.crt', '/home/suporte/certificado/rubimar.pem'])
         data = json.loads(response.text)
-        print(data)
-        
+        token = data['access_token']
+        return token
         
 teste = Receita(Mockado())
 teste.request()
