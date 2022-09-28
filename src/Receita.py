@@ -58,7 +58,7 @@ class Receita():
         #     separators=(',', ': ')
         #     ))
         
-        response = requests.post(url, json=data, headers={'Authorization': f'access_token {token}'})
+        response = requests.post(url, json=data, headers={'Authorization': 'Bearer ACCESS_TOKEN'})
         print(response.text)
         
     def getToken(self):
