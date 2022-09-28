@@ -30,7 +30,7 @@ class Receita():
 
     def buildAPIAttributes(self):
         self.tipoOperacao = 'I'
-        self.idEvento = self.acesso.id
+        self.idEvento = f'{self.acesso.id}'
         self.dataHoraOcorrencia = self.buildDate(self.data, self.hora)
         self.dataHoraRegistro = format(datetime.now(timezone.utc).astimezone().isoformat())
         self.contingencia = False
