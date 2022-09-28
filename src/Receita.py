@@ -52,11 +52,11 @@ class Receita():
         
         token = self.getToken()
         
-        # print(json.dumps(
-        #     data, sort_keys=True,
-        #     indent=4,
-        #     separators=(',', ': ')
-        #     ))
+        print(json.dumps(
+            data, sort_keys=True,
+            indent=4,
+            separators=(',', ': ')
+            ))
         
         response = requests.post(url, json=data, headers={
             'Authorization': f'Bearer {token}',
