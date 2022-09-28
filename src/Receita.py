@@ -76,7 +76,8 @@ class Receita():
         
         # print(headers)
         response = requests.post(url, headers=headers, json=data, cert=['/home/suporte/certificado/rubimar.crt', '/home/suporte/certificado/rubimar.pem'])
-        print(response.text)
+        data = json.loads(response.text)
+        print(data)
         
         
 teste = Receita(Mockado())
