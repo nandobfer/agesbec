@@ -68,10 +68,12 @@ class Receita():
             'Authorization': f'Bearer {token["access_token"]}',
             'Authorization-Pucomex': token["jwt_pucomex"],
             })
-        print(response.request.headers)
-        print()
-        print(json.loads(response.text))
-        print(json.loads(response.text)['code'])
+        response_data = json.loads(response.text)
+        # print(response.request.headers)
+        # print()
+        print(response_data)
+        print(type(response_data))
+        print(response_data['code'])
         
         
         
