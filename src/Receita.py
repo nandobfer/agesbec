@@ -43,6 +43,8 @@ class Receita():
             self.direcao = 'E'
         self.nome = self.acesso.nome
         self.cpf = self.acesso.cpf
+        self.cpfOperadorOcorrencia = ''
+        self.cpfOperadorRegistro = ''
         
     def request(self):
         url = f'{config["url"]}/{self.endpoint}'
@@ -63,8 +65,11 @@ class Receita():
             ))
         
         response = requests.post(url, json=data, headers={
-            'Authorization': f'Bearer {token}',
+            'Authorization': f'Bearer {token["access_token"]}',
+            'Authorization-Pucomex': token["jwt_pucomex"],
             })
+        print(response.request.headers)
+        print()
         print(response.text)
         
     def getToken(self):
@@ -84,7 +89,7 @@ class Receita():
         response = requests.post(url, headers=headers, json=data, cert=['/home/suporte/certificado/rubimar.crt', '/home/suporte/certificado/rubimar.pem'])
         data = json.loads(response.text)
         token = data['access_token']
-        return token
+        return data
         
 teste = Receita(Mockado())
 teste.request()
