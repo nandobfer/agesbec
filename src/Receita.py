@@ -70,7 +70,9 @@ class Receita():
             })
         print(response.request.headers)
         print()
-        print(response.text)
+        print(json.loads(response.text))
+        
+        
         
     def getToken(self):
         url = config["authentication"]["url"]
@@ -90,6 +92,9 @@ class Receita():
         data = json.loads(response.text)
         token = data['access_token']
         return data
+    
+    def credenciar(self):
+        pass
         
 teste = Receita(Mockado())
 teste.request()
