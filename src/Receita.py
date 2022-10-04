@@ -6,8 +6,10 @@ class Mockado():
     def __init__(self) -> None:
         self.data_entrada = datetime.now().date()
         self.hora_entrada = datetime.now().time()
-        self.nome = 'Fernando Burgos'
+        self.nome = 'Edinaldo Bueno Costa'
         self.id = 1
+        self.cpf = '14254811837'
+        self.identificacao = '1'
 
 class Receita():
     def __init__(self, acesso, saida = False):
@@ -40,6 +42,7 @@ class Receita():
         else:
             self.direcao = 'E'
         self.nome = self.acesso.nome
+        self.cpf = self.acesso.cpf
         
     def request(self):
         url = f'{config["url"]}/{self.endpoint}'
