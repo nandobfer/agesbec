@@ -47,7 +47,7 @@ class Receita():
     def request(self):
         url = f'{config["url"]}/{self.endpoint}'
         print(f'request para: {url}')
-        data = (vars(self))
+        data = dict((vars(self)))
         data.pop('acesso')
         data.pop('saida')
         data.pop('endpoint')
