@@ -71,6 +71,7 @@ class Receita():
         print(response.request.headers)
         print()
         print(json.loads(response.text))
+        print(json.loads(response.text)['code'])
         
         
         
