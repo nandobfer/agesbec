@@ -43,8 +43,6 @@ class Receita():
             self.direcao = 'E'
         self.nome = self.acesso.nome
         self.cpf = self.acesso.cpf
-        self.cpfOperadorOcorrencia = ''
-        self.cpfOperadorRegistro = ''
         
     def request(self):
         url = f'{config["url"]}/{self.endpoint}'
@@ -72,9 +70,10 @@ class Receita():
         # print(response.request.headers)
         # print()
         print(response_data)
-        print(type(response_data))
-        print(response_data['code'])
         
+        if response_data['code'] == 'PUCX-ER0201':
+            self.credenciar(dict(data), token)
+            self.request()
         
         
     def getToken(self):
@@ -96,8 +95,24 @@ class Receita():
         token = data['access_token']
         return data
     
-    def credenciar(self):
-        pass
+    def credenciar(self, data, token):
+        data.pop('direcao')
+        url = f'{config["url"]}/sapi/ext/credenciamento-pessoas'
+        print(f'request para: {url}')
+
+        print(json.dumps(
+            data, sort_keys=True,
+            indent=4,
+            separators=(',', ': ')
+            ))
+        
+        response = requests.post(url, json=data, headers={
+            'Authorization': f'Bearer {token["access_token"]}',
+            'Authorization-Pucomex': token["jwt_pucomex"],
+            })
+        response_data = json.loads(response.text)
+        print(response_data)
+        
         
 teste = Receita(Mockado())
 teste.request()
