@@ -8,7 +8,7 @@
         "role-type": "DEPOSIT",
         "url": "https://tre-siscomex-sapi.estaleiro.serpro.gov.br/authenticate"
     },
-    "recinto": "8.94.32.06-1",
+    "recinto": "89432061",
     "databases": {
         "collect_acessos": {
             "host": "192.168.50.9",
