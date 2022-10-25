@@ -90,7 +90,15 @@ class Receita():
         }
         
         # print(headers)
-        response = requests.post(url, headers=headers, json=data, cert=['/home/suporte/certificado/rubimar.crt', '/home/suporte/certificado/rubimar.pem'])
+        response = requests.post(
+            url, 
+            headers=headers, 
+            json=data, 
+            cert=[
+                '/home/suporte/certificado/agesbec/agesbec.crt', 
+                '/home/suporte/certificado/agesbec/agesbec.pem'
+                ]
+        )
         data = json.loads(response.text)
         token = data['access_token']
         return data
