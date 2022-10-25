@@ -28,19 +28,22 @@ class Receita():
         
     def buildDate(self, date, _time):
         formated_datetime = f'{date}T{_time}{config["timezone"]}'
-        return formated_datetime[:-9]+formated_datetime[-6:]
+        formated_datetime = formated_datetime[:-9]+formated_datetime[-6:]
+        print(f'dataHoraOcorrencia: {formated_datetime}')
+        return formated_datetime
     
     def buildNow(self):
         now = format(datetime.now(timezone.utc).astimezone().isoformat())
         now = now[:-9]+now[-6:]
         now = now[:-3]+now[-2:]
+        print(f'dataHoraRegistro: {now}')
         return now
 
     def buildAPIAttributes(self):
         self.tipoOperacao = 'I'
         self.idEvento = f'{self.acesso.id}'
-        self.dataHoraOcorrencia = self.buildNow()
-        self.dataHoraRegistro = self.buildDate(self.data, self.hora)
+        self.dataHoraOcorrencia = self.buildDate(self.data, self.hora)
+        self.dataHoraRegistro = self.buildNow()
         self.contingencia = False
         self.codigoRecinto = config["recinto"]
         if self.saida:
