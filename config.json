@@ -1,5 +1,5 @@
 {
-    "timezone": "-03:00",
+    "timezone": "-0300",
     "url": "https://gateway.apiserpro.serpro.gov.br/integra-comex-recintos-val/v1",
     "authentication" : {
         "key": "HKnrRYUDaydyhfO1YsyeLWptwUMa",
