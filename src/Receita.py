@@ -28,7 +28,7 @@ class Receita():
         
     def buildDate(self, date, _time):
         formated_datetime = f'{date}T{_time}{config["timezone"]}'
-        return formated_datetime[:-3]+formated_datetime[-2:]
+        return formated_datetime[:-9]+formated_datetime[-6:]+formated_datetime[:-3]+formated_datetime[-2:]
 
     def buildAPIAttributes(self):
         self.tipoOperacao = 'I'
