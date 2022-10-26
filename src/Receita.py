@@ -108,6 +108,7 @@ class Receita():
                 '/home/suporte/certificado/agesbec/agesbec.pem'
                 ]
         )
+        print(response.text)
         data = json.loads(response.text)
         token = data['access_token']
         return data
