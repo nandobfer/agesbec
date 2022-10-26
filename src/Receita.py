@@ -108,7 +108,7 @@ class Receita():
                 '/home/suporte/certificado/agesbec/agesbec.pem'
                 ]
         )
-        data = json.loads(response.headers)
+        data = json.loads(str(response.headers))
         print(data)
         raise TypeError('blabla')
         return data
