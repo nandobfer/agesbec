@@ -75,7 +75,7 @@ class Receita():
             'Authorization': tokens["Set-Token"],
             'X-CSRF-Token': tokens["X-CSRF-Token"],
             })
-        response_data = json.loads(response.text)
+        response_data = response.text
         # print(response.request.headers)
         # print()
         print(response_data)
