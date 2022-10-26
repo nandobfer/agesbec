@@ -15,7 +15,7 @@ class Receita():
     def __init__(self, acesso, saida = False):
         self.acesso = acesso
         self.saida = saida
-        self.endpoint = "/sapi/ext/acesso-pessoas"
+        self.endpoint = "/acesso-pessoas"
         
         if saida:
             self.data = acesso.data_saida
@@ -115,7 +115,7 @@ class Receita():
     
     def credenciar(self, data, token):
         data.pop('direcao')
-        url = f'{config["url"]}/sapi/ext/credenciamento-pessoas'
+        url = f'{config["url"]}/credenciamento-pessoas'
         print(f'request para: {url}')
 
         print(json.dumps(
