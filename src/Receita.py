@@ -54,7 +54,7 @@ class Receita():
         self.cpf = self.acesso.cpf
         
     def request(self):
-        url = f'{config["url"]}/{self.endpoint}'
+        url = f'{config["url"]}{self.endpoint}'
         print(f'request para: {url}')
         data = dict((vars(self)))
         data.pop('acesso')
