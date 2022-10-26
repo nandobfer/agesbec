@@ -109,11 +109,6 @@ class Receita():
                 ]
         )
         data = json.loads(response.text)
-        print()
-        print()
-        print(response.text)
-        print()
-        print()
         token = data['access_token']
         return data
     
