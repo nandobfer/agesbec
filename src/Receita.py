@@ -63,7 +63,7 @@ class Receita():
         data.pop('data')
         data.pop('hora')
         
-        token = self.getToken()
+        tokens = self.getToken()
         
         print(json.dumps(
             data, sort_keys=True,
@@ -72,8 +72,8 @@ class Receita():
             ))
         
         response = requests.post(url, json=data, headers={
-            'Authorization': f'Bearer {token["access_token"]}',
-            'Authorization-Pucomex': token["jwt_pucomex"],
+            'Authorization': tokens["Set-Token"],
+            'X-CSRF-Token': tokens["X-CSRF-Token"],
             })
         response_data = json.loads(response.text)
         # print(response.request.headers)
@@ -81,7 +81,7 @@ class Receita():
         print(response_data)
         
         if response_data['code'] == 'PUCX-ER0201':
-            self.credenciar(dict(data), token)
+            self.credenciar(dict(data), tokens)
             self.request()
         
         
@@ -109,14 +109,13 @@ class Receita():
                 ]
         )
         data = json.loads(response.text)
-        token = {
+        tokens = {
             'Set-Token': response.headers['Set-Token'],
             'X-CSRF-Token': response.headers['X-CSRF-Token'],
             'X-CSRF-Expiration': response.headers['X-CSRF-Expiration']
         }
-        print(token)
-        token = data['access_token']
-        return data
+        print(tokens)
+        return tokens
     
     def credenciar(self, data, token):
         data.pop('direcao')
