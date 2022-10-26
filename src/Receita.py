@@ -99,7 +99,6 @@ class Receita():
         response = requests.post(
             url, 
             headers=headers, 
-            json=data, 
             cert=[
                 '/home/suporte/certificado/agesbec/agesbec.crt', 
                 '/home/suporte/certificado/agesbec/agesbec.pem'
