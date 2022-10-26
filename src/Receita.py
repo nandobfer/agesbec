@@ -15,7 +15,7 @@ class Receita():
     def __init__(self, acesso, saida = False):
         self.acesso = acesso
         self.saida = saida
-        self.endpoint = "/acesso-pessoas"
+        self.endpoint = "/api/ext/acesso-pessoas"
         
         if saida:
             self.data = acesso.data_saida
@@ -53,7 +53,7 @@ class Receita():
         self.nome = self.acesso.nome
         self.cpf = self.acesso.cpf
         
-    def request(self):
+    def requestAcesso(self):
         url = f'{config["url"]}{self.endpoint}'
         print(f'request para: {url}')
         data = dict((vars(self)))
@@ -82,7 +82,25 @@ class Receita():
         
         if response_data['code'] == 'PUCX-ER0201':
             self.credenciar(dict(data), tokens)
-            self.request()
+            self.requestAcesso()
+            
+    def credenciar(self, data, token):
+        data.pop('direcao')
+        url = f'{config["url"]}/credenciamento-pessoas'
+        print(f'request para: {url}')
+
+        print(json.dumps(
+            data, sort_keys=True,
+            indent=4,
+            separators=(',', ': ')
+            ))
+        
+        response = requests.post(url, json=data, headers={
+            'Authorization': f'Bearer {token["access_token"]}',
+            'Authorization-Pucomex': token["jwt_pucomex"],
+            })
+        response_data = json.loads(response.text)
+        print(response_data)
         
         
     def getToken(self):
@@ -113,24 +131,6 @@ class Receita():
         print(tokens)
         return tokens
     
-    def credenciar(self, data, token):
-        data.pop('direcao')
-        url = f'{config["url"]}/credenciamento-pessoas'
-        print(f'request para: {url}')
-
-        print(json.dumps(
-            data, sort_keys=True,
-            indent=4,
-            separators=(',', ': ')
-            ))
-        
-        response = requests.post(url, json=data, headers={
-            'Authorization': f'Bearer {token["access_token"]}',
-            'Authorization-Pucomex': token["jwt_pucomex"],
-            })
-        response_data = json.loads(response.text)
-        print(response_data)
-        
         
 teste = Receita(Mockado())
-teste.request()
+teste.requestAcesso()
