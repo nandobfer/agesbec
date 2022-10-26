@@ -110,6 +110,12 @@ class Receita():
         )
         data = json.loads(response.text)
         print(response.headers)
+        token = {
+            'Set-Token': response.headers['Set-Token'],
+            'X-CSRF-Token': response.headers['X-CSRF-Token'],
+            'X-CSRF-Expiration': response.headers['X-CSRF-Expiration']
+        }
+        print(token)
         token = data['access_token']
         return data
     
