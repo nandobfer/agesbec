@@ -1,6 +1,6 @@
 {
     "timezone": "-0200",
-    "url": "https://val.portalunico.siscomex.gov.br/recintos-ext/api/ext/",
+    "url": "https://val.portalunico.siscomex.gov.br/recintos-ext/api/ext",
     "authentication" : {
         "key": "HKnrRYUDaydyhfO1YsyeLWptwUMa",
         "secret": "TDe9ecUDEl1Nxu1q33cklyV5Io0a",
