@@ -6,7 +6,7 @@
         "secret": "TDe9ecUDEl1Nxu1q33cklyV5Io0a",
         "consumer": "HKnrRYUDaydyhfO1YsyeLWptwUMa:TDe9ecUDEl1Nxu1q33cklyV5Io0a",
         "role-type": "DEPOSIT",
-        "url": "https://val.portalunico.siscomex.gov.br/portal/api/autenticar"
+        "url": "https://portalunico.siscomex.gov.br/portal/api/autenticar"
     },
     "recinto": "89432061",
     "databases": {
