@@ -89,16 +89,16 @@ class Receita():
         url = config["authentication"]["url"]
         consumer = base64.b64encode(config["authentication"]["consumer"].encode()).decode()
         headers = {
-            "authorization": "Basic %s" % consumer,
+            # "authorization": "Basic %s" % consumer,
             "role-type": config["authentication"]["role-type"],
             "content-type": "application/json",
-            "Pucomex": "true"
+            # "Pucomex": "true"
         }
         data = {
             "uri": config["url"]
         }
         
-        # print(headers)
+        print(headers)
         response = requests.post(
             url, 
             headers=headers, 
