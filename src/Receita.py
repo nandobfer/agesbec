@@ -94,9 +94,6 @@ class Receita():
             "content-type": "application/json",
             # "Pucomex": "true"
         }
-        data = {
-            "uri": config["url"]
-        }
         
         print(headers)
         response = requests.post(
