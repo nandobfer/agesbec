@@ -98,7 +98,7 @@ class Receita():
             "uri": config["url"]
         }
         
-        # print(headers)
+        print(headers)
         response = requests.post(
             url, 
             headers=headers, 
