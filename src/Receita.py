@@ -108,9 +108,9 @@ class Receita():
                 '/home/suporte/certificado/agesbec/agesbec.pem'
                 ]
         )
-        data = json.loads(str(response.headers))
-        print(data)
-        raise TypeError('blabla')
+        data = json.loads(response.text)
+        print(response.headers)
+        token = data['access_token']
         return data
     
     def credenciar(self, data, token):
