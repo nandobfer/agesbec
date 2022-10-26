@@ -43,7 +43,7 @@ class Receita():
         self.tipoOperacao = 'I'
         self.idEvento = f'{self.acesso.id}'
         self.dataHoraOcorrencia = self.buildDate(self.data, self.hora)
-        self.dataHoraRegistro = self.buildNow()
+        self.dataHoraRegistro = self.buildDate(self.data, self.hora)
         self.contingencia = False
         self.codigoRecinto = config["recinto"]
         if self.saida:
