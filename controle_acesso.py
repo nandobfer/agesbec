@@ -1,6 +1,6 @@
 from src.database_handler import Database
 from src.Acesso import Acesso
-from src.Receita import Receita
+# from src.Receita import Receita
 from time import sleep
 import json
 

@@ -1,0 +1,23 @@
+{
+    "header": {
+        "User-Agent": "python-requests/2.20.0", 
+        "Accept-Encoding": "gzip, deflate", 
+        "Accept": "*/*", 
+        "Connection": "keep-alive", 
+        "Authorization": "eyJhbGciOiJSUzI1NiJ9.eyJleHRlbnNhbyI6IiIsInN1YiI6IjQ0MzUyNDI1MDAwMTM1IiwidGlwbyI6IlBKIiwiaXAiOiIxOTEuNy4yMC4yNiIsImlzcyI6IlBSSVYiLCJpZGNjIjoyMTM4Mywibm9tZSI6IlJJQ0FSRE8gRFJBR08iLCJpcE9yaWdlbSI6IjE5MS43LjIwLjI2IiwiZGVzY3JpY2FvIjoiQVJNQVpFTlMgR0VSQUlTIEUgRU5UUkVQT1NUT1MgU0FPIEJFUk5BUkRPIERPIENBTSIsInBlcmZpcyI6Ikg0c0lBQUFBQUFBQUFJdXVMaWxLekN0T1RNNVBMYmFLRG5MMkMzRU5jX1VMOGRkeGRuUnhkQW4zY3d3Sml0WEpUTEZ5Y1Ezd0RfWU0wVWxKTFU2MmNra3R5Q19PTERtOHNDZ3p2ellXQUhhYnlpSkRBQUFBIiwiY3JlZGVuY2lhbCI6NiwiY3BmIjoiMjY2MjMzMTQ4ODEiLCJpYXQiOjE2NjY5Nzk0NDIsImNvbnRyb2xlIjo3LCJoYXNoIjoiMDk1NDhhZTQwYTU2N2JlODljZmJlMmZiMDU4MjRlMTQifQ.eu34_uZn9GSRl4XwH8OhkDj7uYrQZVKHTc-cr7S93H12E6IDq7B1lZIWrJU49jlLDrfxqthYNTqQl6YQdhaMuKzb7eZdL_80UOAd1tGMqf-NvU8qfn6NHqC96xPHT3EjL7LTyb3O-TawmgtxS2TMRnmhWeOu4XcjuF6MlXrBl0Z6E-6EYXLIJnubntXZ0G3fGGLCPbJOKu4bFUDsn3FNdXhsRJtKjwyC7VtBbitPcXAFb-3I-57uJFuufGOFNygRCBXNJeda-SNLx2A1SSZO7uAjtZb7wrg2MyLITE2aX9_3ihoGjnvGpplJTOqCh3ucKQRU6nKHtDQMahPoc5g3QQ", 
+        "X-CSRF-Token": "pVBdRbnu+2/H4M/81507w5bzrcd8ifAhsIv8FP5FFxvVIrvClTkltAVzm9XUo9agMVfRZeQGt+s=", 
+        "Content-Length": "266", 
+        "Content-Type": "application/json"
+    },
+    "body": {
+        "tipoOperacao": "I", 
+        "idEvento": "1", 
+        "dataHoraOcorrencia": "2022-10-28T14:51:03.836-0200", 
+        "dataHoraRegistro": "2022-10-28T14:51:03.836-0200", 
+        "contingencia": false, 
+        "codigoRecinto": "89432061", 
+        "direcao": "E", 
+        "nome": "Edinaldo Bueno Costa", 
+        "cpf": "14254811837"
+    }
+}

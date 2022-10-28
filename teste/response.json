@@ -1,0 +1,39 @@
+{
+    "header": {
+        "Date": "Fri, 28 Oct 2022 17:50:51 GMT", 
+        "Server": "Apache", 
+        "x-csrf-expiration": "1666983051128", 
+        "access-control-allow-headers": "Origin, X-Requested-With, Content-Type, Accept, X-CSRF-Token, Authorization", 
+        "access-control-allow-origin": "*", 
+        "x-csrf-token": "pVBdRbnu+2+YMvacok3e6nMmGxJlGgiEdn+hDCQ4ZZCxcPW7gR94mm6EhbZhYaWHC1lkl90WnsI=", 
+        "content-type": "application/json;charset=UTF-8", 
+        "set-token": "eyJhbGciOiJSUzI1NiJ9.eyJleHRlbnNhbyI6IiIsInN1YiI6IjQ0MzUyNDI1MDAwMTM1IiwidGlwbyI6IlBKIiwiaXAiOiIxOTEuNy4yMC4yNiIsImlzcyI6IlBSSVYiLCJpZGNjIjoyMTM4Mywibm9tZSI6IlJJQ0FSRE8gRFJBR08iLCJpcE9yaWdlbSI6IjE5MS43LjIwLjI2IiwiZGVzY3JpY2FvIjoiQVJNQVpFTlMgR0VSQUlTIEUgRU5UUkVQT1NUT1MgU0FPIEJFUk5BUkRPIERPIENBTSIsInBlcmZpcyI6Ikg0c0lBQUFBQUFBQUFJdXVMaWxLekN0T1RNNVBMYmFLRG5MMkMzRU5jX1VMOGRkeGRuUnhkQW4zY3d3Sml0WEpUTEZ5Y1Ezd0RfWU0wVWxKTFU2MmNra3R5Q19PTERtOHNDZ3p2ellXQUhhYnlpSkRBQUFBIiwiY3JlZGVuY2lhbCI6NiwiY3BmIjoiMjY2MjMzMTQ4ODEiLCJpYXQiOjE2NjY5Nzk0NDIsImNvbnRyb2xlIjo3LCJoYXNoIjoiMDk1NDhhZTQwYTU2N2JlODljZmJlMmZiMDU4MjRlMTQifQ.eu34_uZn9GSRl4XwH8OhkDj7uYrQZVKHTc-cr7S93H12E6IDq7B1lZIWrJU49jlLDrfxqthYNTqQl6YQdhaMuKzb7eZdL_80UOAd1tGMqf-NvU8qfn6NHqC96xPHT3EjL7LTyb3O-TawmgtxS2TMRnmhWeOu4XcjuF6MlXrBl0Z6E-6EYXLIJnubntXZ0G3fGGLCPbJOKu4bFUDsn3FNdXhsRJtKjwyC7VtBbitPcXAFb-3I-57uJFuufGOFNygRCBXNJeda-SNLx2A1SSZO7uAjtZb7wrg2MyLITE2aX9_3ihoGjnvGpplJTOqCh3ucKQRU6nKHtDQMahPoc5g3QQ", 
+        "content-length": "512", 
+        "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS", 
+        "access-control-max-age": "-1", 
+        "strict-transport-security": "max-age=15768000", 
+        "Via": "1.1 val.portalunico.siscomex.gov.br", 
+        "Keep-Alive": "timeout=60, max=999", 
+        "Connection": "Keep-Alive"
+    },
+    "body": {
+        "message":"RESTEASY003210: Could not find resource for full path: http://tre-pucomex-rcnt-priv.estaleiro.serpro.gov.br/recintos-ext/api/ext/acesso-pessoas",
+        "code":"PUCX-ER0001",
+        "field":null,
+        "path":null,
+        "tag":"[RCNT-YIKYHGQ6SP]",
+        "date":"2022-10-28T14:50:51",
+        "status":404,"detail":[],
+        "severity":"ERROR",
+        "info":{
+            "mnemonico":"RCNT",
+            "sistema":"Recintos de Comércio Exterior",
+            "ambiente":"TRE",
+            "visao":"PRIV",
+            "usuario":"26623314881",
+            "url":"/recintos-ext/api/ext/acesso-pessoas",
+            "fluxo":null,
+            "trackerId":"Lt2a4m381m"
+        }
+    }
+}
