@@ -78,6 +78,16 @@ class Receita():
         response_data = response.text
         # print(response.request.headers)
         # print()
+        print('request.headers')
+        print(response.request.headers)
+        print()
+        print('request.body')
+        print(response.request.body)
+        print()
+        print('response.headers:')
+        print(response.headers)
+        print()
+        print('response.body')
         print(response_data)
         
         if response_data['code'] == 'PUCX-ER0201':
