@@ -1,12 +1,12 @@
 {
     "timezone": "-0200",
-    "url": "https://val.portalunico.siscomex.gov.br/recintos-ext/api/ext/",
+    "url": "https://gateway.apiserpro.serpro.gov.br/integra-comex-recintos-val/v1",
     "authentication" : {
         "key": "HKnrRYUDaydyhfO1YsyeLWptwUMa",
         "secret": "TDe9ecUDEl1Nxu1q33cklyV5Io0a",
         "consumer": "HKnrRYUDaydyhfO1YsyeLWptwUMa:TDe9ecUDEl1Nxu1q33cklyV5Io0a",
         "role-type": "DEPOSIT",
-        "url": "https://val.portalunico.siscomex.gov.br/portal/api/autenticar"
+        "url": "https://tre-siscomex-sapi.estaleiro.serpro.gov.br/authenticate"
     },
     "recinto": "89432061",
     "databases": {
