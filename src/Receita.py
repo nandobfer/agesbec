@@ -75,6 +75,7 @@ class Receita():
             'Authorization': f'Bearer {token["access_token"]}',
             'Authorization-Pucomex': token["jwt_pucomex"],
             })
+        print(response.text)
         response_data = json.loads(response.text)
         # print(response.request.headers)
         # print()
