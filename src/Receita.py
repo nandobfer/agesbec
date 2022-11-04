@@ -89,16 +89,16 @@ class Receita():
         url = config["authentication"]["url"]
         consumer = base64.b64encode(config["authentication"]["consumer"].encode()).decode()
         headers = {
-            "authorization": "Basic %s" % consumer,
+            # "authorization": "Basic %s" % consumer,
             "role-type": config["authentication"]["role-type"],
             "content-type": "application/json",
-            "Pucomex": "true"
+            # "Pucomex": "true"
         }
         data = {
             "uri": config["url"]
         }
         
-        # print(headers)
+        print(headers)
         response = requests.post(
             url, 
             headers=headers, 
@@ -109,6 +109,13 @@ class Receita():
                 ]
         )
         data = json.loads(response.text)
+        print(response.headers)
+        token = {
+            'Set-Token': response.headers['Set-Token'],
+            'X-CSRF-Token': response.headers['X-CSRF-Token'],
+            'X-CSRF-Expiration': response.headers['X-CSRF-Expiration']
+        }
+        print(token)
         token = data['access_token']
         return data
     
