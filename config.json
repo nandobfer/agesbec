@@ -6,7 +6,7 @@
         "secret": "TDe9ecUDEl1Nxu1q33cklyV5Io0a",
         "consumer": "HKnrRYUDaydyhfO1YsyeLWptwUMa:TDe9ecUDEl1Nxu1q33cklyV5Io0a",
         "role-type": "DEPOSIT",
-        "url": "https://tre-siscomex-sapi.estaleiro.serpro.gov.br/authenticate"
+        "url": "https://gateway.apiserpro.serpro.gov.br/integra-comex-recintos-val/v1"
     },
     "recinto": "89432061",
     "databases": {
