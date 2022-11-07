@@ -1,6 +1,5 @@
 from src.database_handler import Database
 from src.Acesso import Acesso
-from src.Receita import Receita
 from time import sleep
 import json
 
@@ -29,15 +28,12 @@ def collectData(saida = False):
         acessos = database.collect.query(sql)['results']
         for item in acessos:
             acesso = Acesso(item, database)
-            print(acesso.nome)
             if not saida:
                 if not acesso.isProcessed():
-                    request = Receita(acesso).requestAcesso()
-                    acesso.process(request = json.dumps(request))
+                    acesso.process()
             else:
                 if not acesso.isProcessed(saida = True):
-                    request = Receita(acesso, saida = True).requestAcesso()
-                    acesso.process(request = json.dumps(request), saida = True)
+                    acesso.process(saida = True)
     except KeyboardInterrupt:
         print('Encerrado pelo usuário')
         database.collect.disconnect()    
