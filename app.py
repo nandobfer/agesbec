@@ -29,6 +29,7 @@ def collectData(saida = False):
         acessos = database.collect.query(sql)['results']
         for item in acessos:
             acesso = Acesso(item, database)
+            print(acesso.nome)
             if not saida:
                 if not acesso.isProcessed():
                     request = Receita(acesso).requestAcesso()
