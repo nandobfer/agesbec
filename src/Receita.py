@@ -21,14 +21,14 @@ class Receita():
         _time = datetime.strptime(time_str, '%H:%M').time().strftime('%H:%M:%S.%f')[:-3]
         formated_datetime = f'{date}T{_time}{config["timezone"]}'
         # formated_datetime = formated_datetime[:-9]+formated_datetime[-6:]
-        print(f'dataHoraOcorrencia: {formated_datetime}')
+        # print(f'dataHoraOcorrencia: {formated_datetime}')
         return formated_datetime
     
     def buildNow(self):
         now = format(datetime.now(timezone.utc).astimezone().isoformat())
         now = now[:-9]+now[-6:]
         now = now[:-3]+now[-2:]
-        print(f'dataHoraRegistro: {now}')
+        # print(f'dataHoraRegistro: {now}')
         return now
 
     def buildAPIAttributes(self):
@@ -47,7 +47,7 @@ class Receita():
         
     def requestAcesso(self):
         url = f'{config["url"]}{self.endpoint}'
-        print(f'request para: {url}')
+        # print(f'request para: {url}')
         data = dict((vars(self)))
         data.pop('acesso')
         data.pop('saida')
@@ -78,7 +78,7 @@ class Receita():
         # print(response.headers)
         # print()
         # print('response.body')
-        print(response_data)
+        # print(response_data)
         
         if response_data['code'] == 'PUCX-ER0201':
             self.credenciar(dict(data), tokens)

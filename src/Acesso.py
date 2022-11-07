@@ -33,23 +33,12 @@ class Acesso():
         else:
             sql = f"select * from {processed_db['table']} where cpf = '{self.cpf}' and data_{tipo} = '{self.data_entrada}' and hora_{tipo} = '{self.hora_entrada}';"
         data = self.database.processed.run(sql)
-        print()
-        print()
-        print()
-        print(data)
-        print(bool(data))
-        print()
-        print()
-        print()
         if data:
             return True
         else:
             return False
         
     def process(self, saida = False):
-        print()
-        print(self.nome)
-        print()
         request = Receita(self, saida).requestAcesso()
         if not saida:
             columns = '(id, nome, cpf, data_entrada, hora_entrada, data_saida, hora_saida, status)'
