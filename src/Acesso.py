@@ -53,6 +53,7 @@ class Acesso():
                 return False
         
         try:
+            print(sql)
             self.database.processed.run(sql)
             print(datetime.now().time())
             print(f'processed id {self.id}, name: {self.nome}, {"saida" if saida else "entrada"}, request:')
