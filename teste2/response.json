@@ -1,0 +1,33 @@
+{
+    "headers": {
+        "Date": "Mon, 07 Nov 2022 18:12:07 GMT", 
+        "Server": "Apache", 
+        "vary": "Origin,Access-Control-Request-Method,Access-Control-Request-Headers", 
+        "x-csrf-token": "NvXIxZ4LXmQzJW1Ko5wmZlEMQy2aZcCFcvUEOB9bEoTpUCp8NbvXgyYPYygFPZyoM3xT/QORXDg=", 
+        "x-csrf-expiration": "1667848327395", 
+        "content-type": "application/json", 
+        "strict-transport-security": "max-age=15768000", 
+        "Via": "1.1 val.portalunico.siscomex.gov.br", 
+        "Keep-Alive": "timeout=60, max=999", 
+        "Connection": "Keep-Alive", 
+        "Transfer-Encoding": "chunked"
+    },
+    "body": {
+        "message":"CNPJ 44352425000135 não habilitado com o perfil Depositário para o Recinto Aduaneiro 89432061 na Data de Ocorrência do evento: 2022-11-07T14:12:26.637-0300.",
+        "code":"RCNT-ER0031",
+        "field":null,
+        "path":null,
+        "tag":"[RCNT-DGCKQSMWD9]",
+        "date":"2022-11-07T15:12:07",
+        "detail":[],
+        "severity":"ERROR",
+        "info":{"mnemonico":"RCNT",
+        "sistema":"Recintos / Serviços Externos",
+        "ambiente":"TRE",
+        "visao":"PRIV",
+        "usuario":"44352425000135",
+        "url":"/recintos-ext/api/ext/acesso-pessoas",
+        "fluxo":null,
+        "trackerId":"HEWwta9yAG"}
+    }
+}

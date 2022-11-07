@@ -1,0 +1,25 @@
+{
+    "headers": {
+        "User-Agent": "python-requests/2.20.0",
+        "Accept-Encoding": "gzip, deflate",
+        "Accept": "*/*",
+        "Connection": "keep-alive",
+        "Authorization": "eyJhbGciOiJSUzI1NiJ9.eyJleHRlbnNhbyI6IiIsInN1YiI6IjQ0MzUyNDI1MDAwMTM1IiwidGlwbyI6IlBKIiwiYW1iaWVudGUiOiJUUkUiLCJpcCI6IjE5MS43LjIwLjI2IiwiaXNzIjoiUFJJViIsImlkY2MiOjIxMzgzLCJub21lIjoiUklDQVJETyBEUkFHTyIsImlwT3JpZ2VtIjoiMTkxLjcuMjAuMjYiLCJkZXNjcmljYW8iOiJBUk1BWkVOUyBHRVJBSVMgRSBFTlRSRVBPU1RPUyBTQU8gQkVSTkFSRE8gRE8gQ0FNIiwicGVyZmlzIjoiSDRzSUFBQUFBQUFBQUl1dUxpbEt6Q3RPVE01UExiYUtEbkwyQzNFTmNfVUw4ZGR4ZG5SeGRBbjNjd3dKMGdrSmNYWjE5dmNMQ0hXSzFjbE1zWEp4RGZBUDlnelJTVWt0VHJaeVNTM0lMODRzT2J5d0tET19OaFlBVGpXRWFrNEFBQUE9IiwiY3JlZGVuY2lhbCI6NiwiY3BmIjoiMjY2MjMzMTQ4ODEiLCJpYXQiOjE2Njc4NDQ3MjYsImNvbnRyb2xlIjo3LCJoYXNoIjoiNjNkNDAwY2ZmNzg3OTdhYWE4YmM0ZmQ0ZTViOGQ0ZDkifQ.HFuGQYJ_q0UZLMm3iLCYthyS1C1lK0dEBQakskkTjrBIpHiOJEeZ2LcLE1IE_SdjDBL1gwPnikYQXNOnMCWSBf5AEvLh2oM64uTDxI27b-8p5r21Tweuk9SndX5QJbbyuhPCOPxNz7xF7lFuaZk0LB4tLnfJbhkOVfQo4t7cEFeOuKzAUMpc7KCPKVhh1peJ8MIivNX9XzOlHoch2FPVmF29KarA7GfQ11DcxUY__XZJ_4Gw2Dpq5IUet0vM6BrnwyJNDun9AUbFhg4j0xAUmBjtyWf_suS3bzkQW0tKmRlz5uVnoLRWEZ8gbriVXvBKAPZ3KV1THXgU7MjumIxSQA",
+        "X-CSRF-Token": "NvXIxZ4LXmQ+kV2V0HWbNGC9lvWr53jstdhx49zpUJW1ITPdAporJnMENGUEl8ReV9C39x34olo=",
+        "Content-Length": "266",
+        "Content-Type": "application/json"
+    },
+    "body": {
+        "tipoOperacao": "I",
+        "idEvento": "1",
+        "dataHoraOcorrencia": "2022-11-07T15:12:26.637-0200",
+        "dataHoraRegistro": "2022-11-07T15:12:26.637-0200",
+        "contingencia": false,
+        "codigoRecinto": "89432061",
+        "direcao": "E",
+        "nome": "Edinaldo Bueno Costa",
+        "cpf": "14254811837"
+    }
+}
+
+
