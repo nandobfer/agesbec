@@ -32,11 +32,11 @@ def collectData(saida = False):
             if not saida:
                 if not acesso.isProcessed():
                     request = Receita(acesso).requestAcesso()
-                    acesso.process(request = json.loads(request))
+                    acesso.process(request = json.dumps(request))
             else:
                 if not acesso.isProcessed(saida = True):
                     request = Receita(acesso, saida = True).requestAcesso()
-                    acesso.process(request = json.loads(request), saida = True)
+                    acesso.process(request = json.dumps(request), saida = True)
     except KeyboardInterrupt:
         print('Encerrado pelo usuário')
         database.collect.disconnect()    
