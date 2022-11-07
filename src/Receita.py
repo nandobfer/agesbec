@@ -110,7 +110,7 @@ class Receita():
                 ]
         )
         data = json.loads(response.text)
-        token = data['access_token']
+        print(data)
         return data
     
     def credenciar(self, data, token):
