@@ -40,8 +40,8 @@ class Acesso():
         
     def process(self, saida = False):
         request = Receita(self, saida).requestAcesso()
+        columns = '(id, nome, cpf, data_entrada, hora_entrada, data_saida, hora_saida, status)'
         if not saida:
-            columns = '(id, nome, cpf, data_entrada, hora_entrada, data_saida, hora_saida, status)'
             values = (self.id, self.nome, self.cpf, self.data_entrada, self.hora_entrada, self.data_saida, self.hora_saida, request)
             sql = f"insert into {processed_db['table']} {columns} values ({self.id}, '{self.nome}', '{self.cpf}', '{self.data_entrada}', '{self.hora_entrada}', '{self.data_saida}', '{self.hora_saida}', '{request}');"
         else:
