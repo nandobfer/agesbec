@@ -53,7 +53,8 @@ class Acesso():
         try:
             self.database.processed.run(sql)
             print(datetime.now().time())
-            print(f'processed id {self.id}, name: {self.nome}, {"saida" if saida else "entrada"}')
+            print(f'processed id {self.id}, name: {self.nome}, {"saida" if saida else "entrada"}, request:')
+            print(request)
         except Exception as error:
             print(error)
             
