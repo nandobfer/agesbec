@@ -15,7 +15,7 @@ class Receita():
     def __init__(self, acesso, saida = False):
         self.acesso = acesso
         self.saida = saida
-        self.endpoint = "/sapi/ext/acesso-pessoas"
+        self.endpoint = "sapi/ext/acesso-pessoas"
         
         if saida:
             self.data = acesso.data_saida
