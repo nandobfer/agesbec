@@ -83,6 +83,8 @@ class Receita():
             self.credenciar(dict(data), tokens)
             self.requestAcesso()
             
+        return response_data
+            
     def credenciar(self, data, token):
         data.pop('direcao')
         url = f'{config["url"]}/credenciamento-pessoas'
