@@ -17,13 +17,8 @@ class Receita():
         
         self.buildAPIAttributes()
         
-    def buildDate(self, date, _time):
-        print(_time)
-        print(_time)
-        print(_time)
-        print(_time)
-        if len(_time.split(':')) == 2:
-            _time = f"{_time}:00"
+    def buildDate(self, date, time_str):
+        _time = datetime.strptime(time_str, '%H:%M').time()
         formated_datetime = f'{date}T{_time}{config["timezone"]}'
         # formated_datetime = formated_datetime[:-9]+formated_datetime[-6:]
         print(f'dataHoraOcorrencia: {formated_datetime}')
