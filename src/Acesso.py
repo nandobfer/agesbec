@@ -57,7 +57,3 @@ class Acesso():
             print(request)
         except Exception as error:
             print(error)
-            
-            
-
-        # ENVIAR PRA API AQUI
