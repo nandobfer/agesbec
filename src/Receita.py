@@ -56,19 +56,17 @@ class Receita():
         
         tokens = self.getToken()
         
-        print(json.dumps(
-            data, sort_keys=True,
-            indent=4,
-            separators=(',', ': ')
-            ))
+        # print(json.dumps(
+        #     data, sort_keys=True,
+        #     indent=4,
+        #     separators=(',', ': ')
+        #     ))
         
         response = requests.post(url, json=data, headers={
             'Authorization': tokens["Set-Token"],
             'X-CSRF-Token': tokens["X-CSRF-Token"],
             })
         response_data = json.loads(response.text)
-        # print(response.request.headers)
-        # print()
         print('request.headers')
         print(response.request.headers)
         print()
@@ -114,7 +112,7 @@ class Receita():
             # "Pucomex": "true"
         }
         
-        print(headers)
+        # print(headers)
         response = requests.post(
             url, 
             headers=headers, 
@@ -129,7 +127,7 @@ class Receita():
             'X-CSRF-Token': response.headers['X-CSRF-Token'],
             'X-CSRF-Expiration': response.headers['X-CSRF-Expiration']
         }
-        print(tokens)
+        # print(tokens)
         return tokens
     
         
