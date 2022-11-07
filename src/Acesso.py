@@ -33,6 +33,7 @@ class Acesso():
         else:
             sql = f"select * from {processed_db['table']} where cpf = '{self.cpf}' and data_{tipo} = '{self.data_entrada}' and hora_{tipo} = '{self.hora_entrada}';"
         data = self.database.processed.run(sql)
+        print(data)
         if data:
             return True
         else:
