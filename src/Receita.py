@@ -18,6 +18,10 @@ class Receita():
         self.buildAPIAttributes()
         
     def buildDate(self, date, _time):
+        print(_time)
+        print(_time)
+        print(_time)
+        print(_time)
         if len(_time.split(':')) == 2:
             _time = f"{_time}:00"
         formated_datetime = f'{date}T{_time}{config["timezone"]}'
