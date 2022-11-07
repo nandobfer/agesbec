@@ -19,6 +19,7 @@ def start():
         sleep(1)
 
 def collectData(saida = False):
+    database.isUp()
     tipo = 'entrada'
     if saida:
         tipo = 'saida'
