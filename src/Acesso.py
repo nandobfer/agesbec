@@ -47,6 +47,9 @@ class Acesso():
             return False
         
     def process(self, saida = False):
+        print()
+        print(self.nome)
+        print()
         request = Receita(self, saida).requestAcesso()
         if not saida:
             columns = '(id, nome, cpf, data_entrada, hora_entrada, data_saida, hora_saida, status)'
