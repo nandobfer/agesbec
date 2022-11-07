@@ -1,4 +1,5 @@
 from burgos.mysql_handler import Mysql
+from datetime import datetime
 import pypyodbc
 import json
 
@@ -44,6 +45,11 @@ class Database():
     def __init__(self, table:str):
         self.collect = SqlServer(table)
         self.processed = Mysql(auth=config['databases'][f'processed_{table}'], login_table=None)
+        
+    def isUp(self):
+        now = datetime.now()
+        sql = f"UPDATE acticity SET lastping = '{now}';"
+        self.processed.run(sql)
 
     # Encryption
 
