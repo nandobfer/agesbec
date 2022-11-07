@@ -48,7 +48,7 @@ class Database():
         
     def isUp(self):
         now = datetime.now()
-        sql = f"UPDATE acticity SET lastping = '{now}';"
+        sql = f"UPDATE activity SET lastping = '{now}';"
         self.processed.run(sql)
 
     # Encryption
