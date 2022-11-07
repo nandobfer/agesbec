@@ -50,7 +50,7 @@ class Acesso():
             if exists:
                 sql = f'UPDATE {processed_db["table"]} SET data_saida = "{self.data_saida}", hora_saida = "{self.hora_saida}", status = "{request}" WHERE id = {self.id}'
             else:
-                sql = f"insert into {processed_db['table']} {columns} values ({self.id}, '{self.nome}', '{self.cpf}', '{self.data_entrada}', '{self.hora_entrada}', '{self.data_saida}', '{self.hora_saida}', '{request}');"
+                sql = f"""insert into {processed_db["table"]} {columns} values ({self.id}, "{self.nome}", "{self.cpf}", "{self.data_entrada}", "{self.hora_entrada}", "{self.data_saida}", "{self.hora_saida}", "{request}");"""
         
         try:
             print(sql)
