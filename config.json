@@ -8,7 +8,7 @@
         "role-type": "DEPOSIT",
         "url": "https://val.portalunico.siscomex.gov.br/portal/api/autenticar"
     },
-    "recinto": "89432061",
+    "recinto": "8943206",
     "databases": {
         "collect_acessos": {
             "host": "192.168.50.9",
