@@ -80,9 +80,9 @@ class Receita():
         # print('response.body')
         # print(response_data)
         
-        if response_data['code'] and response_data['code'] == 'PUCX-ER0201':
-            self.credenciar(dict(data), tokens)
-            self.requestAcesso()
+        # if response_data['code'] == 'PUCX-ER0201':
+        #     self.credenciar(dict(data), tokens)
+        #     self.requestAcesso()
             
         return response_data
             
