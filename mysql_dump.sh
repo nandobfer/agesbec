@@ -2,7 +2,7 @@
 
 if [[ $# == 0 ]]
 then
-    python3 app.py
+    mysqldump -u suporte -pC4ndidato01 siscomex > siscomex.sql
 fi
 
 if [[ $1 ]]
