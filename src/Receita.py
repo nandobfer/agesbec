@@ -46,6 +46,8 @@ class Receita():
         self.cpf = self.acesso.cpf
         
     def requestAcesso(self):
+        global tokens
+        
         url = f'{config["url"]}{self.endpoint}'
         # print(f'request para: {url}')
         data = dict((vars(self)))
@@ -55,7 +57,6 @@ class Receita():
         data.pop('data')
         data.pop('hora')
         
-        tokens = self.getToken()
         
         # print(json.dumps(
         #     data, sort_keys=True,
@@ -105,32 +106,33 @@ class Receita():
         print(response_data)
         
         
-    def getToken(self):
-        url = config["authentication"]["url"]
-        consumer = base64.b64encode(config["authentication"]["consumer"].encode()).decode()
-        headers = {
-            # "authorization": "Basic %s" % consumer,
-            "role-type": config["authentication"]["role-type"],
-            "content-type": "application/json",
-            # "Pucomex": "true"
-        }
-        
-        # print(headers)
-        response = requests.post(
-            url, 
-            headers=headers, 
-            cert=[
-                '/home/suporte/certificado/agesbec/agesbec.crt', 
-                '/home/suporte/certificado/agesbec/agesbec.pem'
-                ]
-        )
-        data = json.loads(response.text)
-        tokens = {
-            'Set-Token': response.headers['Set-Token'],
-            'X-CSRF-Token': response.headers['X-CSRF-Token'],
-            'X-CSRF-Expiration': response.headers['X-CSRF-Expiration']
-        }
-        # print(tokens)
-        return tokens
+def getToken():
+    url = config["authentication"]["url"]
+    consumer = base64.b64encode(config["authentication"]["consumer"].encode()).decode()
+    headers = {
+        # "authorization": "Basic %s" % consumer,
+        "role-type": config["authentication"]["role-type"],
+        "content-type": "application/json",
+        # "Pucomex": "true"
+    }
+    
+    # print(headers)
+    response = requests.post(
+        url, 
+        headers=headers, 
+        cert=[
+            '/home/suporte/certificado/agesbec/agesbec.crt', 
+            '/home/suporte/certificado/agesbec/agesbec.pem'
+            ]
+    )
+    data = json.loads(response.text)
+    tokens = {
+        'Set-Token': response.headers['Set-Token'],
+        'X-CSRF-Token': response.headers['X-CSRF-Token'],
+        'X-CSRF-Expiration': response.headers['X-CSRF-Expiration']
+    }
+    # print(tokens)
+    return tokens
     
         
+tokens = getToken()
