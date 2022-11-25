@@ -105,8 +105,12 @@ class Receita():
 def isTokenExpired():
     global expiration
     now = datetime.now()
+    
 
     delta = (expiration - now).seconds / 60
+    print(f"expiration: {expiration}")
+    print(f"now: {now}")
+    print(f"delta: {delta}")
     if delta <= 1:
         return True
         
