@@ -131,7 +131,7 @@ def getToken():
         'X-CSRF-Token': response.headers['X-CSRF-Token'],
         'X-CSRF-Expiration': response.headers['X-CSRF-Expiration']
     }
-    # print(tokens)
+    print(tokens)
     return tokens
     
         
