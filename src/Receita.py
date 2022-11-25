@@ -46,8 +46,8 @@ class Receita():
         self.cpf = self.acesso.cpf
         
     def requestAcesso(self):
-        global tokens
-        
+        global tokens, expiration
+                
         url = f'{config["url"]}{self.endpoint}'
         # print(f'request para: {url}')
         data = dict((vars(self)))
@@ -58,11 +58,8 @@ class Receita():
         data.pop('hora')
         
         
-        # print(json.dumps(
-        #     data, sort_keys=True,
-        #     indent=4,
-        #     separators=(',', ': ')
-        #     ))
+        if isTokenExpired():
+            getToken()
         
         response = requests.post(url, json=data, headers={
             'Authorization': tokens["Set-Token"],
@@ -105,15 +102,21 @@ class Receita():
         response_data = json.loads(response.text)
         print(response_data)
         
+def isTokenExpired():
+    global expiration
+    now = datetime.now()
+
+    delta = (expiration - now).seconds / 60
+    if delta <= 1:
+        return True
+        
         
 def getToken():
+    global tokens, expiration
     url = config["authentication"]["url"]
-    consumer = base64.b64encode(config["authentication"]["consumer"].encode()).decode()
     headers = {
-        # "authorization": "Basic %s" % consumer,
         "role-type": config["authentication"]["role-type"],
         "content-type": "application/json",
-        # "Pucomex": "true"
     }
     
     # print(headers)
@@ -125,14 +128,16 @@ def getToken():
             '/home/suporte/certificado/agesbec/agesbec.pem'
             ]
     )
-    data = json.loads(response.text)
-    tokens = {
+    # data = json.loads(response.text)
+    new_tokens = {
         'Set-Token': response.headers['Set-Token'],
         'X-CSRF-Token': response.headers['X-CSRF-Token'],
         'X-CSRF-Expiration': response.headers['X-CSRF-Expiration']
     }
-    print(tokens)
-    return tokens
+    expiration = datetime.fromtimestamp(int(new_tokens['X-CSRF-Expiration']) / 1000)
+    print(new_tokens)
+    return new_tokens
     
         
+expiration = None
 tokens = getToken()
