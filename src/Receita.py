@@ -1,5 +1,5 @@
 from datetime import datetime, timezone
-import json, requests, base64
+import json, requests, base64, os
 config = json.load(open('config.json'))
 
 class Receita():
@@ -132,7 +132,8 @@ def getToken():
             '/home/suporte/certificado/agesbec/agesbec.pem'
             ]
     )
-    # data = json.loads(response.text)
+    data = json.loads(response.text)
+    os.system(f"echo {response.text} | log.txt")
     new_tokens = {
         'Set-Token': response.headers['Set-Token'],
         'X-CSRF-Token': response.headers['X-CSRF-Token'],
