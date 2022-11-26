@@ -132,8 +132,9 @@ def getToken():
             '/home/suporte/certificado/agesbec/agesbec.pem'
             ]
     )
-    data = json.loads(response.text)
-    os.system(f"echo {response.text} | log.txt")
+    # data = json.loads(response.text)
+    with open('log.txt', 'w') as f:
+        f.write(response.text)
     new_tokens = {
         'Set-Token': response.headers['Set-Token'],
         'X-CSRF-Token': response.headers['X-CSRF-Token'],
