@@ -107,11 +107,11 @@ def isTokenExpired():
     now = datetime.now()
     
 
-    delta = (expiration - now).seconds / 60
+    delta = expiration - now
     print(f"expiration: {expiration}")
     print(f"now: {now}")
     print(f"delta: {delta}")
-    if delta <= 1:
+    if delta.days:
         return True
         
         
