@@ -134,7 +134,7 @@ def getToken():
     )
     # data = json.loads(response.text)
     with open('log.txt', 'w') as f:
-        f.write(response.text)
+        f.write(f"now: {datetime.now()} \n{response.text}")
     new_tokens = {
         'Set-Token': response.headers['Set-Token'],
         'X-CSRF-Token': response.headers['X-CSRF-Token'],
