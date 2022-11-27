@@ -39,7 +39,7 @@ class Acesso():
             return False
         
     def process(self, saida = False):
-        request = json.dumps(str(Receita(self, saida).requestAcesso())).replace("'", "''").replace('\\', '\\\\')
+        request = self.database.connection.escape_string(json.dumps(str(Receita(self, saida).requestAcesso())))
         columns = '(id, nome, cpf, data_entrada, hora_entrada, data_saida, hora_saida, status)'
         if not saida:
             values = (self.id, self.nome, self.cpf, self.data_entrada, self.hora_entrada, self.data_saida, self.hora_saida, request)
