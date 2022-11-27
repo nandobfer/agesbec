@@ -58,10 +58,6 @@ class Receita():
         data.pop('data')
         data.pop('hora')
         
-        
-        if isTokenExpired():
-            getToken()
-        
         response = requests.post(url, json=data, headers={
             'Authorization': tokens["Set-Token"],
             'X-CSRF-Token': tokens["X-CSRF-Token"],
@@ -69,7 +65,10 @@ class Receita():
         response_data = json.loads(response.text)
         request_data = {'header': response.request.headers, 'body': response.request.body}
         full_response = {'request': request_data, 'response': response_data}
-        pd(full_response)
+        # pd(full_response)
+        if full_response['response']['tag'] == '[RCNT-KIEICW9ZK5]':
+            getToken()
+            
         # print('request.headers')
         # print(response.request.headers)
         # print()
