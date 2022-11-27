@@ -66,6 +66,8 @@ class Receita():
             'X-CSRF-Token': tokens["X-CSRF-Token"],
             })
         response_data = json.loads(response.text)
+        request_data = {'header': json.loads(response.request.headers), 'body': json.loads(response.request.body)}
+        full_response = {'request': request_data, 'response': response_data}
         # print('request.headers')
         # print(response.request.headers)
         # print()
@@ -82,7 +84,7 @@ class Receita():
         #     self.credenciar(dict(data), tokens)
         #     self.requestAcesso()
             
-        return response_data
+        return full_response
             
     def credenciar(self, data, token):
         data.pop('direcao')
