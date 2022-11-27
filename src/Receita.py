@@ -133,13 +133,13 @@ def getToken():
             ]
     )
     # data = json.loads(response.text)
-    with open('log.txt', 'w') as f:
-        f.write(f"now: {datetime.now()} \n{response.text}")
     new_tokens = {
         'Set-Token': response.headers['Set-Token'],
         'X-CSRF-Token': response.headers['X-CSRF-Token'],
         'X-CSRF-Expiration': response.headers['X-CSRF-Expiration']
     }
+    with open('log.txt', 'w') as f:
+        f.write(f"now: {datetime.now()} \n{response.text}")
     expiration = datetime.fromtimestamp(int(new_tokens['X-CSRF-Expiration']) / 1000)
     print(new_tokens)
     return new_tokens
