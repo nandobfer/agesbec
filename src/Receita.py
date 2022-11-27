@@ -75,9 +75,10 @@ class Receita():
 
         # pd(full_response)
         try:
-            if response['response']['tag'] == '[RCNT-KIEICW9ZK5]':
-                getToken()
-                response = self.getResponse(data)
+            if response['response']['tag']:
+                if response['response']['tag'] == '[RCNT-KIEICW9ZK5]':
+                    getToken()
+                    response = self.getResponse(data)
         except Exception as error:
             print()
             print(error)
