@@ -139,7 +139,7 @@ def getToken():
         'X-CSRF-Expiration': response.headers['X-CSRF-Expiration']
     }
     with open('log.txt', 'w') as f:
-        f.write(f"now: {datetime.now()} \n{response.text}")
+        f.write(f"now: {datetime.now()} \n{new_tokens}")
     expiration = datetime.fromtimestamp(int(new_tokens['X-CSRF-Expiration']) / 1000)
     print(new_tokens)
     return new_tokens
