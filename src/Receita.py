@@ -68,6 +68,7 @@ class Receita():
         # pd(full_response)
         if full_response['response']['tag'] == '[RCNT-KIEICW9ZK5]':
             getToken()
+            return self.requestAcesso()
             
         # print('request.headers')
         # print(response.request.headers)
