@@ -42,15 +42,15 @@ class Acesso():
         request = Receita(self, saida).requestAcesso()
         columns = '(id, nome, cpf, data_entrada, hora_entrada, data_saida, hora_saida, status)'
         if not saida:
-            values = (self.id, self.nome, self.cpf, self.data_entrada, self.hora_entrada, self.data_saida, self.hora_saida, json.dumps(request))
-            sql = f"""insert into {processed_db["table"]} {columns} values ({self.id}, "{self.nome}", "{self.cpf}", "{self.data_entrada}", "{self.hora_entrada}", "{self.data_saida}", "{self.hora_saida}", '{json.dumps(request)}');"""
+            values = (self.id, self.nome, self.cpf, self.data_entrada, self.hora_entrada, self.data_saida, self.hora_saida, str(request))
+            sql = f"""insert into {processed_db["table"]} {columns} values ({self.id}, "{self.nome}", "{self.cpf}", "{self.data_entrada}", "{self.hora_entrada}", "{self.data_saida}", "{self.hora_saida}", '{str(request)}');"""
         else:
             sql = f'SELECT * FROM {processed_db["table"]} WHERE id = {self.id} AND data_saida like "%None%"'
             exists = self.database.processed.run(sql)
             if exists:
-                sql = f"""UPDATE {processed_db["table"]} SET data_saida = "{self.data_saida}", hora_saida = "{self.hora_saida}", status = '{json.dumps(request)}' WHERE id = {self.id}"""
+                sql = f"""UPDATE {processed_db["table"]} SET data_saida = "{self.data_saida}", hora_saida = "{self.hora_saida}", status = '{str(request)}' WHERE id = {self.id}"""
             else:
-                sql = f"""insert into {processed_db["table"]} {columns} values ({self.id}, "{self.nome}", "{self.cpf}", "{self.data_entrada}", "{self.hora_entrada}", "{self.data_saida}", "{self.hora_saida}", '{json.dumps(request)}');"""
+                sql = f"""insert into {processed_db["table"]} {columns} values ({self.id}, "{self.nome}", "{self.cpf}", "{self.data_entrada}", "{self.hora_entrada}", "{self.data_saida}", "{self.hora_saida}", '{str(request)}');"""
         
         try:
             self.database.processed.run(sql)
