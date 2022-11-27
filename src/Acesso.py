@@ -39,7 +39,7 @@ class Acesso():
             return False
         
     def process(self, saida = False):
-        request = pymysql.escape_string((json.loads(json.dumps(str(Receita(self, saida).requestAcesso())))))
+        request = json.dumps(str(Receita(self, saida).requestAcesso())).replace("'", "''").replace('\\', '\\\\')
         columns = '(id, nome, cpf, data_entrada, hora_entrada, data_saida, hora_saida, status)'
         if not saida:
             values = (self.id, self.nome, self.cpf, self.data_entrada, self.hora_entrada, self.data_saida, self.hora_saida, request)
