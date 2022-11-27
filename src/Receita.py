@@ -46,10 +46,23 @@ class Receita():
         self.nome = self.acesso.nome
         self.cpf = self.acesso.cpf
         
-    def requestAcesso(self):
+    def getResponse(self, data):
         global tokens, expiration
-                
         url = f'{config["url"]}{self.endpoint}'
+        
+        response = requests.post(url, json=data, headers={
+            'Authorization': tokens["Set-Token"],
+            'X-CSRF-Token': tokens["X-CSRF-Token"],
+            })
+        
+        response_data = json.loads(response.text)
+        request_data = {'header': response.request.headers, 'body': response.request.body}
+        full_response = {'request': request_data, 'response': response_data}
+        
+        return full_response
+    
+        
+    def requestAcesso(self):
         # print(f'request para: {url}')
         data = dict((vars(self)))
         data.pop('acesso')
@@ -58,17 +71,12 @@ class Receita():
         data.pop('data')
         data.pop('hora')
         
-        response = requests.post(url, json=data, headers={
-            'Authorization': tokens["Set-Token"],
-            'X-CSRF-Token': tokens["X-CSRF-Token"],
-            })
-        response_data = json.loads(response.text)
-        request_data = {'header': response.request.headers, 'body': response.request.body}
-        full_response = {'request': request_data, 'response': response_data}
+        response = self.getResponse(data)
+
         # pd(full_response)
-        if full_response['response']['tag'] == '[RCNT-KIEICW9ZK5]':
+        if response['response']['tag'] == '[RCNT-KIEICW9ZK5]':
             getToken()
-            return self.requestAcesso()
+            response = self.getResponse(data)
             
         # print('request.headers')
         # print(response.request.headers)
@@ -86,7 +94,7 @@ class Receita():
         #     self.credenciar(dict(data), tokens)
         #     self.requestAcesso()
             
-        return full_response
+        return response
             
     def credenciar(self, data, token):
         data.pop('direcao')
