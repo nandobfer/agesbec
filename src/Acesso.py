@@ -39,22 +39,24 @@ class Acesso():
             return False
         
     def process(self, saida = False):
-        request = self.database.processed.connection.escape_string(json.dumps(str(Receita(self, saida).requestAcesso())))
+        request = json.dumps(str(Receita(self, saida).requestAcesso()))
         columns = '(id, nome, cpf, data_entrada, hora_entrada, data_saida, hora_saida, status)'
         if not saida:
+            sql = f"""insert into {processed_db["table"]} {columns} values (%s,%s,%s,%s,%s,%s,%s,%s);"""
             values = (self.id, self.nome, self.cpf, self.data_entrada, self.hora_entrada, self.data_saida, self.hora_saida, request)
-            sql = f"""insert into {processed_db["table"]} {columns} values ({self.id}, "{self.nome}", "{self.cpf}", "{self.data_entrada}", "{self.hora_entrada}", "{self.data_saida}", "{self.hora_saida}", {request});"""
         else:
             sql = f"""SELECT * FROM {processed_db["table"]} WHERE id = {self.id} AND data_saida like '%None%' """
             exists = self.database.processed.run(sql)
             if exists:
-                sql = f"""UPDATE {processed_db["table"]} SET data_saida = "{self.data_saida}", hora_saida = "{self.hora_saida}", status = {request} WHERE id = {self.id}"""
+                sql = f"""UPDATE {processed_db["table"]} SET data_saida = %s, hora_saida = %s, status = %s WHERE id = %s"""
+                values = (self.data_saida, self.hora_saida, request, self.id)
             else:
-                sql = f"""insert into {processed_db["table"]} {columns} values ({self.id}, "{self.nome}", "{self.cpf}", "{self.data_entrada}", "{self.hora_entrada}", "{self.data_saida}", "{self.hora_saida}", {request});"""
+                sql = f"""insert into {processed_db["table"]} {columns} values (%s, %s, %s, %s, %s, %s, %s, %s);"""
+                values = (self.id, self.nome, self.cpf, self.data_entrada, self.hora_entrada, self.data_saida, self.hora_saida, request)
         
         try:
             print(sql)
-            self.database.processed.run(sql)
+            self.database.processed.run(sql, values)
             print(datetime.now().time())
             print(f'processed id {self.id}, name: {self.nome}, {"saida" if saida else "entrada"}')
         except Exception as error:
