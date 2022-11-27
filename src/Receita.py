@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
 import json, requests, base64, os
+from print_dict import pd
 config = json.load(open('config.json'))
 
 class Receita():
@@ -68,7 +69,7 @@ class Receita():
         response_data = json.loads(response.text)
         request_data = {'header': response.request.headers, 'body': response.request.body}
         full_response = {'request': request_data, 'response': response_data}
-        print(json.dumps(full_response, indent=2))
+        pd(full_response)
         # print('request.headers')
         # print(response.request.headers)
         # print()
