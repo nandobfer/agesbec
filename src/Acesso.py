@@ -55,7 +55,6 @@ class Acesso():
                 values = (self.id, self.nome, self.cpf, self.data_entrada, self.hora_entrada, self.data_saida, self.hora_saida, request)
         
         try:
-            print(sql)
             self.database.processed.run(sql, prepared=True, values=values)
             print(datetime.now().time())
             print(f'processed id {self.id}, name: {self.nome}, {"saida" if saida else "entrada"}')
