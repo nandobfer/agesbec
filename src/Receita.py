@@ -68,6 +68,7 @@ class Receita():
         response_data = json.loads(response.text)
         request_data = {'header': response.request.headers, 'body': response.request.body}
         full_response = {'request': request_data, 'response': response_data}
+        print(json.dumps(full_response, indent=2))
         # print('request.headers')
         # print(response.request.headers)
         # print()
