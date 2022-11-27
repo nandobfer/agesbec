@@ -24,7 +24,7 @@ def collectData(saida = False):
         tipo = 'saida'
         sql = f'SELECT * FROM {config["databases"]["processed_acessos"]["table"]} ORDER BY data_{tipo} DESC, hora_{tipo} DESC LIMIT 20'
     try:
-        sql = f'SELECT TOP 5 * FROM {config["databases"]["collect_acessos"]["table"]} ORDER BY data_{tipo} DESC, hora_{tipo} DESC'
+        sql = f'SELECT TOP 50 * FROM {config["databases"]["collect_acessos"]["table"]} ORDER BY data_{tipo} DESC, hora_{tipo} DESC'
         acessos = database.collect.query(sql)['results']
         for item in acessos:
             acesso = Acesso(item, database)
