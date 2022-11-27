@@ -56,7 +56,7 @@ class Acesso():
         
         try:
             print(sql)
-            self.database.processed.run(sql, values)
+            self.database.processed.run(sql, prepared=True, values=values)
             print(datetime.now().time())
             print(f'processed id {self.id}, name: {self.nome}, {"saida" if saida else "entrada"}')
         except Exception as error:
