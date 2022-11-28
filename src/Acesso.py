@@ -59,5 +59,4 @@ class Acesso():
             print(datetime.now().time())
             print(f'processed id {self.id}, name: {self.nome}, {"saida" if saida else "entrada"}')
         except Exception as error:
-            # print(error)
-            pass
+            print(error)
