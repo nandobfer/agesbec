@@ -163,5 +163,7 @@ tokens = getToken()
 
 if __name__ == "__main__":
     args = sys.argv
+    print(args)
+    print(str(args))
     with open('test.txt') as f:
         f.write(str(args))
