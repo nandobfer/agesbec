@@ -163,5 +163,5 @@ tokens = getToken()
 
 if __name__ == "__main__":
     args = sys.argv
-    with open('test.txt') as f:
+    with open('/home/siscomex/test.txt') as f:
         f.write(args)
