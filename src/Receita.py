@@ -55,6 +55,7 @@ class Receita():
             'X-CSRF-Token': tokens["X-CSRF-Token"],
             })
         
+        print(response.text)
         response_data = json.loads(response.text)
         request_data = {'body': json.loads(response.request.body)}
         full_response = {'request': request_data, 'response': response_data}
