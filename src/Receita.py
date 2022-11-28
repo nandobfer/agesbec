@@ -1,5 +1,5 @@
 from datetime import datetime, timezone
-import json, requests, base64, os
+import json, requests, base64, os, sys
 from print_dict import pd
 config = json.load(open('config.json'))
 
@@ -160,3 +160,7 @@ def getToken():
         
 expiration = None
 tokens = getToken()
+
+if __name__ == "__main__":
+    args = sys.argv
+    print(args)
