@@ -12,12 +12,26 @@ def start():
     database.collect.connect()
     database.processed.connect()
     while True:
-        collectData()
+        collectCredenciamento()
+        break
+        collectAcessos()
         sleep(1)
-        collectData(saida = True)
+        collectAcessos(saida = True)
         sleep(1)
+        
+def collectCredenciamento():
+    database.isUp()
 
-def collectData(saida = False):
+    try:
+        sql = f'SELECT TOP 1 * FROM {config["databases"]["collect_funcionarios"]["table"]}'
+        funcionarios = database.collect.query(sql)['results']
+        print(funcionarios)
+
+    except KeyboardInterrupt:
+        print('Encerrado pelo usuário')
+        database.collect.disconnect() 
+
+def collectAcessos(saida = False):
     database.isUp()
     tipo = 'entrada'
     if saida:

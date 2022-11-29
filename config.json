@@ -26,6 +26,22 @@
             "database": "siscomex",
             "table": "acessos"
         },
+        "collect_funcionarios": {
+            "host": "192.168.50.9",
+            "port": "3306",
+            "user": "apirfb",
+            "password": "JOao@123#",
+            "database": "DpaAcesso",
+            "table": "CAD_FUNCIONARIOS"
+        },
+        "processed_funcionarios": {
+            "host": "192.168.50.3",
+            "port": "3306",
+            "user": "suporte",
+            "password": "C4ndidato01",
+            "database": "siscomex",
+            "table": "credenciamento"
+        },
         "collect_visitantes": {
             "host": "192.168.50.9",
             "port": "3306",
