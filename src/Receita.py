@@ -39,8 +39,8 @@ class Receita():
     def buildAPIAttributes(self):
         self.tipoOperacao = 'I'
         self.idEvento = f'{self.object.id}'
-        self.dataHoraOcorrencia = self.buildDate(self.data, self.hora) if not self.credenciamento else self.buildNow()
-        self.dataHoraRegistro = self.buildDate(self.data, self.hora) if not self.credenciamento else self.buildNow()
+        self.dataHoraOcorrencia = self.buildDate(self.data, self.hora) if not self.credenciamento else self.buildDate(self.inclusao.split(' ')[0], self.inclusao.split(' ')[1])
+        self.dataHoraRegistro = self.buildDate(self.data, self.hora) if not self.credenciamento else self.buildDate(self.inclusao.split(' ')[0], self.inclusao.split(' ')[1])
         self.contingencia = False
         self.codigoRecinto = config["recinto"]
         if self.saida:
@@ -72,6 +72,7 @@ class Receita():
         data.pop('endpoint')
         data.pop('direcao')
         data.pop('credenciamento')
+        data.pop('inclusao')
         
         print(data)
         

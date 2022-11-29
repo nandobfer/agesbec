@@ -13,6 +13,7 @@ class Funcionario():
         self.nome = data['nome']
         self.cpf = data['cpf'].replace('.', '').replace('-', '').replace(' ', '').replace(',', '') if data['cpf'] else None
         self.demitido = int(data['recisao'])
+        self.inclusao = data['inclusao']
                 
     def isProcessed(self):
         sql = f"""select * from {processed_db['table']} where codigo = {self.id};"""
