@@ -71,6 +71,9 @@ class Receita():
         data.pop('saida')
         data.pop('endpoint')
         data.pop('direcao')
+        data.pop('credenciamento')
+        
+        print(data)
         
         response = self.getResponse(data)
         
