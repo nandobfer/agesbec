@@ -15,6 +15,8 @@ def start():
     database.processed.connect()
     
     funcionarios_db.collect.connect()
+    funcionarios_db.processed.connect()
+    
     while True:
         collectCredenciamento()
         break 
