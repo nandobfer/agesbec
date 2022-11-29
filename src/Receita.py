@@ -41,8 +41,8 @@ class Receita():
     def buildAPIAttributes(self):
         self.tipoOperacao = 'I'
         self.idEvento = f'{self.object.id}'
-        self.dataHoraOcorrencia = self.buildDate(self.data, self.hora) if not self.credenciamento else self.buildDate(self.object.inclusao.split(' ')[0], self.object.inclusao.split(' ')[1])
-        self.dataHoraRegistro = self.buildDate(self.data, self.hora) if not self.credenciamento else self.buildDate(self.object.inclusao.split(' ')[0], self.object.inclusao.split(' ')[1])
+        self.dataHoraOcorrencia = self.buildDate(self.data, self.hora) if not self.credenciamento else self.buildDate(self.object.inclusao.split(' ')[0], fixTime(self.object.inclusao.split(' ')[1]))
+        self.dataHoraRegistro = self.buildDate(self.data, self.hora) if not self.credenciamento else self.buildDate(self.object.inclusao.split(' ')[0], fixTime(self.object.inclusao.split(' ')[1]))
         self.contingencia = False
         self.codigoRecinto = config["recinto"]
         if self.saida:
@@ -182,6 +182,13 @@ def getToken():
     expiration = datetime.fromtimestamp(int(new_tokens['X-CSRF-Expiration']) / 1000)
     # print(new_tokens)
     return new_tokens
+
+    
+def fixTime(time):
+    _time = time.split(':')[:2]
+    time = f"{_time[0]}:{_time[1]}"
+    return time
+
     
         
 expiration = None
