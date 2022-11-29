@@ -26,7 +26,9 @@ def collectCredenciamento():
     try:
         sql = f'SELECT TOP 1 * FROM {config["databases"]["collect_funcionarios"]["table"]}'
         funcionarios = funcionarios_db.collect.query(sql)['results']
-        print(funcionarios)
+        for item in funcionarios:
+            print(item)
+            print(type(item))
 
     except KeyboardInterrupt:
         print('Encerrado pelo usuário')
