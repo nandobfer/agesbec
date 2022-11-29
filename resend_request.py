@@ -7,7 +7,7 @@ if len(sys.argv) > 1:
     try:
         acesso = json.loads(acesso)
         print(acesso)   
-        request = Receita(node=True).getResponse(acesso)
+        request = Receita(True, node=True).getResponse(acesso)
         print(request)
     except Exception as error:
         print(error)
