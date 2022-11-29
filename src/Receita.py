@@ -129,10 +129,9 @@ def isTokenExpired():
         return True
         
         
-def getToken(url = 'https://val.portalunico.siscomex.gov.br/portal/api/autenticar'):
+def getToken():
     global tokens, expiration
-    if not url:
-        url = config["authentication"]["url"]
+    url = 'https://val.portalunico.siscomex.gov.br/portal/api/autenticar'
     headers = {
         "role-type": config["authentication"]["role-type"],
         "content-type": "application/json",
