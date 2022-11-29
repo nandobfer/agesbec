@@ -89,6 +89,7 @@ class Receita():
     def requestAcesso(self):
         # print(f'request para: {url}')
         data = dict((vars(self)))
+        data.pop('credenciamento')
         data.pop('object')
         data.pop('saida')
         data.pop('endpoint')
