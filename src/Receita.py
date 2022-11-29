@@ -163,10 +163,8 @@ expiration = None
 tokens = getToken()
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        sys.exit()
-
-    acesso = sys.argv[1]
+    if len(sys.argv) < 1:
+        acesso = sys.argv[1]
     
-    with open('test.txt', 'w') as f:
-        f.write(str(acesso))
+        with open('test.txt', 'w') as f:
+            f.write(str(acesso))
