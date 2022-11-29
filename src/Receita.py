@@ -54,6 +54,9 @@ class Receita():
         global tokens, expiration
         url = f'{config["url"]}{self.endpoint}'
         
+        if isTokenExpired():
+            tokens = getToken()
+        
         response = requests.post(url, json=data, headers={
             'Authorization': tokens["Set-Token"],
             'X-CSRF-Token': tokens["X-CSRF-Token"],
@@ -77,11 +80,6 @@ class Receita():
         
         response = self.getResponse(data)
         
-        if 'message' in response['response']:
-            if response['response']['message'] == """"Acesso n\u00e3o autenticado. O header 'X-CSRF-Token' est\u00e1 expirado.""":
-                getToken()
-                response = self.getResponse(data)
-                
         return response
         
     def requestAcesso(self):
@@ -97,60 +95,17 @@ class Receita():
         response = self.getResponse(data)
 
         # pd(full_response)
-        if 'message' in response['response']:
-            if response['response']['message'] == """"Acesso n\u00e3o autenticado. O header 'X-CSRF-Token' est\u00e1 expirado.""":
-                getToken()
-                response = self.getResponse(data)
-            
-        # print('request.headers')
-        # print(response.request.headers)
-        # print()
-        # print('request.body')
-        # print(response.request.body)
-        # print()
-        # print('response.headers:')
-        # print(response.headers)
-        # print()
-        # print('response.body')
-        # print(response_data)
-        
-        # if response_data['code'] == 'PUCX-ER0201':
-        #     self.credenciar(dict(data), tokens)
-        #     self.requestAcesso()
             
         return response
-            
-    def credenciar(self, data, token):
-        data.pop('direcao')
-        url = f'{config["url"]}/credenciamento-pessoas'
-        print(f'request para: {url}')
-
-        print(json.dumps(
-            data, sort_keys=True,
-            indent=4,
-            separators=(',', ': ')
-            ))
-        
-        response = requests.post(url, json=data, headers={
-            'Authorization': f'Bearer {token["access_token"]}',
-            'Authorization-Pucomex': token["jwt_pucomex"],
-            })
-        response_data = json.loads(response.text)
-        print(response_data)
         
 def isTokenExpired():
     global expiration
     now = datetime.now()
     
-
-    delta = expiration - now
-    print(f"expiration: {expiration}")
-    print(f"now: {now}")
-    print(f"delta: {delta}")
-    if delta.days:
+    if now >= expiration:
         return True
-        
-        
+    
+
 def getToken():
     global tokens, expiration
     url = 'https://val.portalunico.siscomex.gov.br/portal/api/autenticar'
