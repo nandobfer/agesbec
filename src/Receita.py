@@ -6,6 +6,7 @@ config = json.load(open('config.json'))
 class Receita():
     def __init__(self, object, endpoint, saida = False, node = False, credenciamento = False):
         self.endpoint = endpoint
+        self.credenciamento = credenciamento
 
         if not node:
             self.object = object
@@ -38,8 +39,8 @@ class Receita():
     def buildAPIAttributes(self):
         self.tipoOperacao = 'I'
         self.idEvento = f'{self.object.id}'
-        self.dataHoraOcorrencia = self.buildDate(self.data, self.hora)
-        self.dataHoraRegistro = self.buildDate(self.data, self.hora)
+        self.dataHoraOcorrencia = self.buildDate(self.data, self.hora) if not self.credenciamento else self.buildNow()
+        self.dataHoraRegistro = self.buildDate(self.data, self.hora) if not self.credenciamento else self.buildNow()
         self.contingencia = False
         self.codigoRecinto = config["recinto"]
         if self.saida:
