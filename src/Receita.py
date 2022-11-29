@@ -5,11 +5,11 @@ config = json.load(open('config.json'))
 
 class Receita():
     def __init__(self, acesso, saida = False, node = False):
-        self.acesso = acesso
-        self.saida = saida
-        self.endpoint = "/acesso-pessoas"
-        
         if not node:
+            self.acesso = acesso
+            self.saida = saida
+            self.endpoint = "/acesso-pessoas"
+        
             if saida:
                 self.data = acesso.data_saida
                 self.hora = acesso.hora_saida
