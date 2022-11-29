@@ -21,7 +21,7 @@ def start():
         sleep(1)
         
 def collectCredenciamento():
-    database.isUp()
+    funcionarios_db.isUp()
 
     try:
         sql = f'SELECT TOP 1 * FROM {config["databases"]["collect_funcionarios"]["table"]}'
