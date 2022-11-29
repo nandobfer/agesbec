@@ -133,7 +133,7 @@ def getToken():
     global tokens, expiration
     url = 'https://val.portalunico.siscomex.gov.br/portal/api/autenticar'
     headers = {
-        "role-type": config["authentication"]["role-type"],
+        "role-type": "DEPOSIT",
         "content-type": "application/json",
     }
     
