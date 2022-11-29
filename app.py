@@ -18,8 +18,8 @@ def start():
     funcionarios_db.processed.connect()
     
     while True:
-        collectCredenciamento()
-        break 
+        # collectCredenciamento()
+        # break 
         collectAcessos()
         sleep(1)
         collectAcessos(saida = True)
