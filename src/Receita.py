@@ -4,11 +4,12 @@ from print_dict import pd
 config = json.load(open('config.json'))
 
 class Receita():
-    def __init__(self, acesso, saida = False, node = False, endpoint = "/acesso-pessoas"):
+    def __init__(self, acesso, saida = False, node = False):
+        self.endpoint = 
+        
         if not node:
             self.acesso = acesso
             self.saida = saida
-            self.endpoint = endpoint
         
             if saida:
                 self.data = acesso.data_saida
