@@ -25,10 +25,10 @@ class Funcionario():
         
     def process(self, saida = False):
         request = json.dumps(Receita(self, "/credenciamento-pessoas", credenciamento=True).requestCredenciamento())
-        columns = '(codigo, nome, cpf, demitido, status)'
+        columns = '(codigo, nome, cpf, demitido, status, inclusao)'
         
         sql = f"""insert into {processed_db["table"]} {columns} values (%s,%s,%s,%s,%s);"""
-        values = (self.id, self.nome, self.cpf, self.demitido, request)
+        values = (self.id, self.nome, self.cpf, self.demitido, request, self.inclusao)
         
         try:
             self.database.processed.run(sql, prepared=True, values=values)
