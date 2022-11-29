@@ -23,7 +23,8 @@ class Receita():
             self.buildAPIAttributes()
         
     def buildDate(self, date, time_str):
-        print(date, time_str)
+        print(date)
+        print(time_str)
         _time = datetime.strptime(time_str, '%H:%M').time().strftime('%H:%M:%S.%f')[:-3]
         formated_datetime = f'{date}T{_time}{config["timezone"]}'
         # formated_datetime = formated_datetime[:-9]+formated_datetime[-6:]
