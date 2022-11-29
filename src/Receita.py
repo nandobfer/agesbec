@@ -73,6 +73,8 @@ class Receita():
         data.pop('direcao')
         data.pop('credenciamento')
         
+        data.update({"credenciamentoAtivo": True})
+        
         response = self.getResponse(data)
         
         if 'tag' in response['response']:
