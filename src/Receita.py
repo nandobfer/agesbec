@@ -4,19 +4,20 @@ from print_dict import pd
 config = json.load(open('config.json'))
 
 class Receita():
-    def __init__(self, acesso, saida = False):
+    def __init__(self, acesso, saida = False, node = False):
         self.acesso = acesso
         self.saida = saida
         self.endpoint = "/acesso-pessoas"
         
-        if saida:
-            self.data = acesso.data_saida
-            self.hora = acesso.hora_saida
-        else:
-            self.data = acesso.data_entrada
-            self.hora = acesso.hora_entrada
-        
-        self.buildAPIAttributes()
+        if not node:
+            if saida:
+                self.data = acesso.data_saida
+                self.hora = acesso.hora_saida
+            else:
+                self.data = acesso.data_entrada
+                self.hora = acesso.hora_entrada
+            
+            self.buildAPIAttributes()
         
     def buildDate(self, date, time_str):
         _time = datetime.strptime(time_str, '%H:%M').time().strftime('%H:%M:%S.%f')[:-3]
@@ -162,6 +163,10 @@ expiration = None
 tokens = getToken()
 
 if __name__ == "__main__":
-    args = sys.argv
+    if len(sys.argv) < 2:
+        sys.exit()
+
+    acesso = sys.argv[1]
+    
     with open('test.txt', 'w') as f:
-        f.write(str(args))
+        f.write(str(acesso))
