@@ -30,9 +30,8 @@ def collectCredenciamento():
         sql = f'SELECT TOP 1 * FROM {config["databases"]["collect_funcionarios"]["table"]}'
         funcionarios = funcionarios_db.collect.query(sql)['results']
         for item in funcionarios:
-            print(item)
-            
             funcionario = Funcionario(item, funcionarios_db)
+            
             if not funcionario.isProcessed():
                 funcionario.process()
 

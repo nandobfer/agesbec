@@ -40,7 +40,7 @@ class Receita():
         self.tipoOperacao = 'I'
         self.idEvento = f'{self.object.id}'
         self.dataHoraOcorrencia = self.buildDate(self.data, self.hora) if not self.credenciamento else self.buildDate(self.object.inclusao.split(' ')[0], fixTime(self.object.inclusao.split(' ')[1]))
-        self.dataHoraRegistro = self.buildDate(self.data, self.hora) if not self.credenciamento else self.buildDate(self.object.inclusao.split(' ')[0], fixTime(self.object.inclusao.split(' ')[1]))
+        self.dataHoraRegistro = self.buildDate(self.data, self.hora) if not self.credenciamento else self.buildNow()
         self.contingencia = False
         self.codigoRecinto = config["recinto"]
         if self.saida:
@@ -63,6 +63,7 @@ class Receita():
         request_data = {'body': json.loads(response.request.body)}
         full_response = {'request': request_data, 'response': response_data}
         
+        print(full_response)
         return full_response
     
     def requestCredenciamento(self):
@@ -72,8 +73,6 @@ class Receita():
         data.pop('endpoint')
         data.pop('direcao')
         data.pop('credenciamento')
-        
-        print(data)
         
         response = self.getResponse(data)
         
