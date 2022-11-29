@@ -32,10 +32,8 @@ class Acesso():
             sql = f"select * from {processed_db['table']} where cpf {'is NULL' if not self.cpf else '= {self.cpf}'} and data_{tipo} = '{self.data_saida}' and hora_{tipo} = '{self.hora_saida}';"
         else:
             sql = f"select * from {processed_db['table']} where cpf {'is NULL' if not self.cpf else '= {self.cpf}'} and data_{tipo} = '{self.data_entrada}' and hora_{tipo} = '{self.hora_entrada}';"
-        print(sql)
         data = self.database.processed.run(sql)
         if data:
-            print(data)
             return True
         else:
             return False
