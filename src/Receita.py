@@ -63,7 +63,6 @@ class Receita():
         request_data = {'body': json.loads(response.request.body)}
         full_response = {'request': request_data, 'response': response_data}
         
-        print(full_response)
         return full_response
     
     def requestCredenciamento(self):
