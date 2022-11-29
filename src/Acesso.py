@@ -32,7 +32,6 @@ class Acesso():
             sql = f"""select * from {processed_db['table']} where cpf {'is NULL' if not self.cpf else f"= '{self.cpf}'"} and data_{tipo} = '{self.data_saida}' and hora_{tipo} = '{self.hora_saida}';"""
         else:
             sql = f"""select * from {processed_db['table']} where cpf {'is NULL' if not self.cpf else f"= '{self.cpf}'"} and data_{tipo} = '{self.data_entrada}' and hora_{tipo} = '{self.hora_entrada}';"""
-        print(sql)
         data = self.database.processed.run(sql)
         if data:
             return True
@@ -47,7 +46,9 @@ class Acesso():
             values = (self.id, self.nome, self.cpf, self.data_entrada, self.hora_entrada, self.data_saida, self.hora_saida, request)
         else:
             sql = f"""SELECT * FROM {processed_db["table"]} WHERE id = {self.id} AND data_saida like '%None%' """
+            print(sql)
             exists = self.database.processed.run(sql)
+            print(exists)
             if exists:
                 sql = f"""UPDATE {processed_db["table"]} SET data_saida = %s, hora_saida = %s, status = %s WHERE id = %s"""
                 values = (self.data_saida, self.hora_saida, request, self.id)
