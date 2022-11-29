@@ -7,13 +7,14 @@ config = json.load(open('config.json'))
 collect_db = config['databases']['collect_acessos']
 processed_db = config['databases']['processed_acessos']
 database = Database('acessos')
+funcionarios_db = Database('funcionarios')
 
 def start():
     database.collect.connect()
     database.processed.connect()
     while True:
         collectCredenciamento()
-        break
+        break 
         collectAcessos()
         sleep(1)
         collectAcessos(saida = True)
@@ -24,7 +25,7 @@ def collectCredenciamento():
 
     try:
         sql = f'SELECT TOP 1 * FROM {config["databases"]["collect_funcionarios"]["table"]}'
-        funcionarios = database.collect.query(sql)['results']
+        funcionarios = funcionarios_db.collect.query(sql)['results']
         print(funcionarios)
 
     except KeyboardInterrupt:
