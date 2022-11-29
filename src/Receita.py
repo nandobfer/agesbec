@@ -4,19 +4,19 @@ from print_dict import pd
 config = json.load(open('config.json'))
 
 class Receita():
-    def __init__(self, acesso, saida = False, node = False):
-        self.endpoint = "/acesso-pessoas"
-        
+    def __init__(self, object, endpoint, saida = False, node = False):
+        self.endpoint = endpoint
+
         if not node:
-            self.acesso = acesso
+            self.object = object
             self.saida = saida
         
             if saida:
-                self.data = acesso.data_saida
-                self.hora = acesso.hora_saida
+                self.data = object.data_saida
+                self.hora = object.hora_saida
             else:
-                self.data = acesso.data_entrada
-                self.hora = acesso.hora_entrada
+                self.data = object.data_entrada
+                self.hora = object.hora_entrada
             
             self.buildAPIAttributes()
         
@@ -36,7 +36,7 @@ class Receita():
 
     def buildAPIAttributes(self):
         self.tipoOperacao = 'I'
-        self.idEvento = f'{self.acesso.id}'
+        self.idEvento = f'{self.object.id}'
         self.dataHoraOcorrencia = self.buildDate(self.data, self.hora)
         self.dataHoraRegistro = self.buildDate(self.data, self.hora)
         self.contingencia = False
@@ -45,8 +45,8 @@ class Receita():
             self.direcao = 'S'
         else:
             self.direcao = 'E'
-        self.nome = self.acesso.nome
-        self.cpf = self.acesso.cpf
+        self.nome = self.object.nome
+        self.cpf = self.object.cpf
         
     def getResponse(self, data):
         global tokens, expiration
@@ -63,11 +63,26 @@ class Receita():
         
         return full_response
     
+    def requestCredenciamento(self):
+        data = dict((vars(self)))
+        data.pop('object')
+        data.pop('saida')
+        data.pop('endpoint')
+        data.pop('direcao')
+        
+        response = self.getResponse(data)
+        
+        if 'tag' in response['response']:
+            if response['response']['tag'] == '[RCNT-KIEICW9ZK5]':
+                getToken()
+                response = self.getResponse(data)
+                
+        return response
         
     def requestAcesso(self):
         # print(f'request para: {url}')
         data = dict((vars(self)))
-        data.pop('acesso')
+        data.pop('object')
         data.pop('saida')
         data.pop('endpoint')
         data.pop('data')

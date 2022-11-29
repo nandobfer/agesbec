@@ -1,5 +1,6 @@
 from src.database_handler import Database
 from src.Acesso import Acesso
+from src.Funcionario import Funcionario
 from time import sleep
 import json
 
@@ -28,7 +29,10 @@ def collectCredenciamento():
         funcionarios = funcionarios_db.collect.query(sql)['results']
         for item in funcionarios:
             print(item)
-            print(type(item))
+            
+            funcionario = Funcionario(item, funcionarios_db)
+            if not funcionario.isProcessed():
+                funcionario.process()
 
     except KeyboardInterrupt:
         print('Encerrado pelo usuário')
@@ -45,12 +49,9 @@ def collectAcessos(saida = False):
         acessos = database.collect.query(sql)['results']
         for item in acessos:
             acesso = Acesso(item, database)
-            if not saida:
-                if not acesso.isProcessed():
-                    acesso.process()
-            else:
-                if not acesso.isProcessed(saida = True):
-                    acesso.process(saida = True)
+            if not acesso.isProcessed(saida = saida):
+                acesso.process(saida = saida)
+                
     except KeyboardInterrupt:
         print('Encerrado pelo usuário')
         database.collect.disconnect()    
