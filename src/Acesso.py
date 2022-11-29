@@ -45,10 +45,8 @@ class Acesso():
             sql = f"""insert into {processed_db["table"]} {columns} values (%s,%s,%s,%s,%s,%s,%s,%s);"""
             values = (self.id, self.nome, self.cpf, self.data_entrada, self.hora_entrada, self.data_saida, self.hora_saida, request)
         else:
-            sql = f"""SELECT * FROM {processed_db["table"]} WHERE id = {self.id} AND data_saida like '%None%' """
-            print(sql)
+            sql = f"""SELECT * FROM {processed_db["table"]} WHERE id = {self.id} AND data_saida is NULL """
             exists = self.database.processed.run(sql)
-            print(exists)
             if exists:
                 sql = f"""UPDATE {processed_db["table"]} SET data_saida = %s, hora_saida = %s, status = %s WHERE id = %s"""
                 values = (self.data_saida, self.hora_saida, request, self.id)
