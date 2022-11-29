@@ -11,7 +11,7 @@ class Funcionario():
         self.database = database
         self.id = data['codigo']
         self.nome = data['nome']
-        self.cpf = data['cpf'].replace('.', '').replace('-', '').replace(' ', '') if data['cpf'] else None
+        self.cpf = data['cpf'].replace('.', '').replace('-', '').replace(' ', '').replace(',', '') if data['cpf'] else None
         self.demitido = int(data['recisao'])
                 
     def isProcessed(self):
