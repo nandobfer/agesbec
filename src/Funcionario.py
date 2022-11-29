@@ -27,7 +27,7 @@ class Funcionario():
         request = json.dumps(Receita(self, "/credenciamento-pessoas", credenciamento=True).requestCredenciamento())
         columns = '(codigo, nome, cpf, demitido, status, inclusao)'
         
-        sql = f"""insert into {processed_db["table"]} {columns} values (%s,%s,%s,%s,%s);"""
+        sql = f"""insert into {processed_db["table"]} {columns} values (%s,%s,%s,%s,%s,%s);"""
         values = (self.id, self.nome, self.cpf, self.demitido, request, self.inclusao)
         
         try:
