@@ -95,8 +95,8 @@ class Receita():
         response = self.getResponse(data)
 
         # pd(full_response)
-        if 'tag' in response['response']:
-            if response['response']['tag'] == '[RCNT-KIEICW9ZK5]':
+        if 'message' in response['response']:
+            if response['response']['message'] == """"Acesso n\u00e3o autenticado. O header 'X-CSRF-Token' est\u00e1 expirado.""":
                 getToken()
                 response = self.getResponse(data)
             
