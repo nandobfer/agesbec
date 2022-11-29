@@ -23,7 +23,7 @@ class Funcionario():
             return False
         
     def process(self, saida = False):
-        request = json.dumps(Receita(self, "/credenciamento-pessoas").requestCredenciamento())
+        request = json.dumps(Receita(self, "/credenciamento-pessoas", credenciamento=True).requestCredenciamento())
         columns = '(codigo, nome, cpf, demitido, status)'
         
         sql = f"""insert into {processed_db["table"]} {columns} values (%s,%s,%s,%s,%s);"""

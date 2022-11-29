@@ -4,19 +4,20 @@ from print_dict import pd
 config = json.load(open('config.json'))
 
 class Receita():
-    def __init__(self, object, endpoint, saida = False, node = False):
+    def __init__(self, object, endpoint, saida = False, node = False, credenciamento = False):
         self.endpoint = endpoint
 
         if not node:
             self.object = object
             self.saida = saida
         
-            if saida:
-                self.data = object.data_saida
-                self.hora = object.hora_saida
-            else:
-                self.data = object.data_entrada
-                self.hora = object.hora_entrada
+            if not credenciamento:
+                if saida:
+                    self.data = object.data_saida
+                    self.hora = object.hora_saida
+                else:
+                    self.data = object.data_entrada
+                    self.hora = object.hora_entrada
             
             self.buildAPIAttributes()
         
