@@ -12,6 +12,8 @@ funcionarios_db = Database('funcionarios')
 def start():
     database.collect.connect()
     database.processed.connect()
+    
+    funcionarios_db.collect.connect()
     while True:
         collectCredenciamento()
         break 
@@ -21,8 +23,6 @@ def start():
         sleep(1)
         
 def collectCredenciamento():
-    funcionarios_db.isUp()
-
     try:
         sql = f'SELECT TOP 1 * FROM {config["databases"]["collect_funcionarios"]["table"]}'
         funcionarios = funcionarios_db.collect.query(sql)['results']
