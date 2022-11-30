@@ -20,7 +20,7 @@ def start():
 
 def collectAdmissoes():
     try:
-        sql = f"""SELECT TOP * FROM {config["databases"]["collect_funcionarios"]["table"]} WHERE recisao = '0' ;"""
+        sql = f"""SELECT * FROM {config["databases"]["collect_funcionarios"]["table"]} WHERE recisao = '0' ;"""
         funcionarios = database.collect.query(sql)['results']
         for item in funcionarios:
             funcionario = Funcionario(item, database)
@@ -34,7 +34,7 @@ def collectAdmissoes():
         
 def collectDemissoes():
     try:
-        sql = f"""SELECT TOP * FROM {config["databases"]["collect_funcionarios"]["table"]} WHERE recisao = '1' ;"""
+        sql = f"""SELECT * FROM {config["databases"]["collect_funcionarios"]["table"]} WHERE recisao = '1' ;"""
         funcionarios = database.collect.query(sql)['results']
         for item in funcionarios:
             funcionario = Funcionario(item, database)
