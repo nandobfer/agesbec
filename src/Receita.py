@@ -30,11 +30,11 @@ class Receita():
         return formated_datetime
     
     def buildNow(self):
-        now = format(datetime.now(timezone.utc).astimezone().isoformat())
+        now = format((datetime.now(timezone.utc)- timedelta(seconds=60)).astimezone().isoformat())
         now = now[:-9]+now[-6:]
         now = now[:-3]+now[-2:]
         # print(f'dataHoraRegistro: {now}')
-        return now - timedelta(seconds=60)
+        return now
 
     def buildAPIAttributes(self):
         self.tipoOperacao = 'I'
