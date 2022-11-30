@@ -16,23 +16,46 @@ class Funcionario():
         self.inclusao = data['inclusao']
                 
     def isProcessed(self):
-        sql = f"""select * from {processed_db['table']} where codigo = {self.id};"""
+        sql = f"""SELECT * FROM {processed_db['table']} WHERE codigo = '{self.id}' ;"""
         data = self.database.processed.run(sql)
         if data:
             return True
         else:
             return False
         
-    def process(self, saida = False):
+    def isResigned(self):
+        sql = f"""SELECT * FROM {processed_db['table']} WHERE codigo = '{self.id}' AND demitido = 1 ;"""
+        data = self.database.processed.run(sql)
+        if data:
+            return True
+        else:
+            return False
+        
+        
+    def process(self):
         request = json.dumps(Receita(self, "/credenciamento-pessoas", credenciamento=True).requestCredenciamento())
         columns = '(codigo, nome, cpf, demitido, status, inclusao)'
         
-        sql = f"""insert into {processed_db["table"]} {columns} values (%s,%s,%s,%s,%s,%s);"""
+        sql = f"""INSERT INTO {processed_db["table"]} {columns} VALUES (%s,%s,%s,%s,%s,%s);"""
         values = (self.id, self.nome, self.cpf, self.demitido, request, self.inclusao)
         
         try:
             self.database.processed.run(sql, prepared=True, values=values)
             print(datetime.now().time())
             print(f'accredited code {self.id}, name: {self.nome}')
+        except Exception as error:
+            print(error)
+            
+    def resign(self):
+        request = json.dumps(Receita(self, "/credenciamento-pessoas", credenciamento=True, demissao=True).requestCredenciamento())
+        columns = '(codigo, nome, cpf, demitido, status, inclusao)'
+        
+        sql = f"""UPDATE {processed_db["table"]} SET demitido = 1 WHERE codigo = %s ;"""
+        values = self.id
+        
+        try:
+            self.database.processed.run(sql, prepared=True, values=values)
+            print(datetime.now().time())
+            print(f'resigned code {self.id}, name: {self.nome}')
         except Exception as error:
             print(error)

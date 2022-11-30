@@ -4,9 +4,10 @@ from print_dict import pd
 config = json.load(open('config.json'))
 
 class Receita():
-    def __init__(self, object, endpoint, saida = False, node = False, credenciamento = False):
+    def __init__(self, object, endpoint, saida = False, node = False, credenciamento = False, demissao = False):
         self.endpoint = endpoint
         self.credenciamento = credenciamento
+        self.demissao = demissao
 
         if not node:
             self.object = object
@@ -37,7 +38,7 @@ class Receita():
         return now
 
     def buildAPIAttributes(self):
-        self.tipoOperacao = 'I'
+        self.tipoOperacao = "R" if self.demissao else "I"
         self.idEvento = f'{self.object.id}'
         self.dataHoraOcorrencia = self.buildDate(self.data, self.hora) if not self.credenciamento else self.buildNow()
         self.dataHoraRegistro = self.buildDate(self.data, self.hora) if not self.credenciamento else self.buildNow()
@@ -75,8 +76,9 @@ class Receita():
         data.pop('endpoint')
         data.pop('direcao')
         data.pop('credenciamento')
+        data.pop('demissao')
         
-        data.update({"credenciamentoAtivo": True})
+        data.update({"credenciamentoAtivo": not self.demissao})
         
         response = self.getResponse(data)
         
@@ -86,6 +88,7 @@ class Receita():
         # print(f'request para: {url}')
         data = dict((vars(self)))
         data.pop('credenciamento')
+        data.pop('demissao')
         data.pop('object')
         data.pop('saida')
         data.pop('endpoint')
