@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 import json, requests, base64, os, sys
 from print_dict import pd
 config = json.load(open('config.json'))
@@ -34,7 +34,7 @@ class Receita():
         now = now[:-9]+now[-6:]
         now = now[:-3]+now[-2:]
         # print(f'dataHoraRegistro: {now}')
-        return now
+        return now - timedelta(seconds=60)
 
     def buildAPIAttributes(self):
         self.tipoOperacao = 'I'
