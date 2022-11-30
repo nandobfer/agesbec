@@ -22,9 +22,11 @@ def collectCredenciamento():
         
         for item in funcionarios:
             funcionario = Funcionario(item, database)
-            funcionario.process()
 
-            if funcionarios.index(item) > 0 and funcionarios.index(item) % 20 == 0:
+            if not funcionario.isProcessed():
+                funcionario.process()
+
+            if funcionarios.index(item) > 0 and funcionarios.index(item) % 100 == 0:
                 sleep(60 * 60)
 
 
