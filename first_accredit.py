@@ -1,6 +1,7 @@
 from src.database_handler import Database
 from src.Funcionario import Funcionario
 from time import sleep
+from datetime import datetime, timedelta
 import json
 
 config = json.load(open('config.json'))
@@ -16,7 +17,7 @@ def start():
         
 def collectCredenciamento():
     try:
-        sql = f"""SELECT TOP 1 * FROM {config["databases"]["collect_funcionarios"]["table"]} WHERE recisao='0' ORDER BY codigo DESC"""
+        sql = f"""SELECT * FROM {config["databases"]["collect_funcionarios"]["table"]} WHERE recisao='0' ORDER BY codigo DESC"""
         funcionarios = database.collect.query(sql)['results']
         print(len(funcionarios))
         
@@ -27,6 +28,9 @@ def collectCredenciamento():
                 funcionario.process()
 
             if funcionarios.index(item) > 0 and funcionarios.index(item) % 100 == 0:
+                print()
+                print(f"""sleeping until {datetime.now() + timedelta(minutes=60)}.""")
+                print()
                 sleep(60 * 60)
 
 
