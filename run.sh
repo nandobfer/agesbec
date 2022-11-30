@@ -2,7 +2,8 @@
 
 if [[ $# == 0 ]]
 then
-    screen -m -d -S siscomex python3 app.py
+    screen -m -d -S siscomex python3 controle_acesso.py
+    screen -m -d -S siscomex python3 credenciamento_pessoas.py
 fi
 
 if [[ $1 ]]
@@ -13,6 +14,7 @@ then
         git stash -u
         git pull
         chmod +x run.sh
-        screen -m -d -S siscomex python3 app.py
+        screen -m -d -S siscomex python3 controle_acesso.py
+        screen -m -d -S siscomex python3 credenciamento_pessoas.py
     fi
 fi
