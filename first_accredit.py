@@ -20,12 +20,12 @@ def collectCredenciamento():
     try:
         sql = f"""SELECT * FROM {config["databases"]["collect_funcionarios"]["table"]} WHERE recisao='0' ORDER BY codigo DESC"""
         funcionarios = database.collect.query(sql)['results']
-        for item in funcionarios:
-            print(item)
-            # funcionario = Funcionario(item, database)
+        print(len(funcionarios))
+        # for item in funcionarios:
+        #     funcionario = Funcionario(item, database)
 
             # if not funcionario.isProcessed():
-            #     funcionario.process()
+            # funcionario.process()
 
     except KeyboardInterrupt:
         print('Encerrado pelo usuário')
