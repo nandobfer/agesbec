@@ -25,7 +25,7 @@ def collectCredenciamento():
             funcionario = Funcionario(item, database)
 
             if not funcionario.isProcessed():
-                columns = '(codigo, nome, cpf, demitido, status, inclusao)'
+                columns = '(codigo, nome, cpf, demitido, inclusao)'
         
                 sql = f"""INSERT INTO {processed_db["table"]} {columns} VALUES (%s,%s,%s,%s,%s);"""
                 values = (funcionario.id, funcionario.nome, funcionario.cpf, funcionario.demitido, funcionario.inclusao)
