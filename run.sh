@@ -4,7 +4,7 @@ if [[ $# == 0 ]]
 then
     screen -m -d -S siscomex python3 controle_acesso.py
     screen -m -d -S credenciamento python3 credenciamento_pessoas.py
-    cd ..
+    cd ../api
     screen -m -d -S api yarn start.py
 fi
 
@@ -20,7 +20,7 @@ then
         chmod +x run.sh
         screen -m -d -S siscomex python3 controle_acesso.py
         screen -m -d -S credenciamento python3 credenciamento_pessoas.py
-        cd ..
+        cd ../api
         screen -m -d -S api yarn start.py
     fi
 fi
