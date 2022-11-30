@@ -18,7 +18,7 @@ def start():
         
 def collectCredenciamento():
     try:
-        sql = f"""SELECT * FROM {config["databases"]["collect_funcionarios"]["table"]} WHERE recisao='1' ORDER BY codigo DESC"""
+        sql = f"""SELECT * FROM {config["databases"]["collect_funcionarios"]["table"]} WHERE recisao='0' ORDER BY codigo DESC"""
         funcionarios = database.collect.query(sql)['results']
         for item in funcionarios:
             print(item)
