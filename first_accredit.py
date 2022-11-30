@@ -12,20 +12,21 @@ def start():
     database.collect.connect()
     database.processed.connect()
     
-    while True:
-        collectCredenciamento()
-        sleep(1)
+    collectCredenciamento()
         
 def collectCredenciamento():
     try:
         sql = f"""SELECT * FROM {config["databases"]["collect_funcionarios"]["table"]} WHERE recisao='0' ORDER BY codigo DESC"""
         funcionarios = database.collect.query(sql)['results']
         print(len(funcionarios))
-        # for item in funcionarios:
-        #     funcionario = Funcionario(item, database)
+        
+        for item in funcionarios:
+            funcionario = Funcionario(item, database)
+            funcionario.process()
 
-            # if not funcionario.isProcessed():
-            # funcionario.process()
+            if funcionarios.index(item) > 0 and funcionarios.index(item) % 20 == 0:
+                sleep(60 * 60)
+
 
     except KeyboardInterrupt:
         print('Encerrado pelo usuário')
