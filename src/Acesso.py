@@ -39,7 +39,7 @@ class Acesso():
             return False
         
     def process(self, saida = False):
-        request = json.dumps(Receita(self, "/acesso-pessoas", saida).requestAcesso())
+        request = json.dumps(Receita(self, "/acesso-pessoas", saida=saida).requestAcesso())
         columns = '(id, nome, cpf, data_entrada, hora_entrada, data_saida, hora_saida, status)'
         if not saida:
             sql = f"""insert into {processed_db["table"]} {columns} values (%s,%s,%s,%s,%s,%s,%s,%s);"""

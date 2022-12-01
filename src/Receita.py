@@ -100,6 +100,7 @@ class Receita():
         # pd(full_response)
             
         return response
+    
         
 def isTokenExpired():
     global expiration
@@ -107,7 +108,6 @@ def isTokenExpired():
     
     if now >= expiration:
         return True
-    
 
 def getToken():
     global tokens, expiration
@@ -132,19 +132,10 @@ def getToken():
         'X-CSRF-Token': response.headers['X-CSRF-Token'],
         'X-CSRF-Expiration': response.headers['X-CSRF-Expiration']
     }
-    with open('log.txt', 'w') as f:
-        f.write(f"now: {datetime.now()} \n{new_tokens}")
+
     expiration = datetime.fromtimestamp(int(new_tokens['X-CSRF-Expiration']) / 1000)
     # print(new_tokens)
     return new_tokens
 
-    
-def fixTime(time):
-    _time = time.split(':')[:2]
-    time = f"{_time[0]}:{_time[1]}"
-    return time
-
-    
-        
 expiration = None
 tokens = getToken()

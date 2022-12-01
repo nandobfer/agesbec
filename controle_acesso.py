@@ -32,8 +32,8 @@ def collectAcessos(saida = False):
             if not acesso.isProcessed(saida = saida):
                 acesso.process(saida = saida)
                 
-    except KeyboardInterrupt:
-        print('Encerrado pelo usuário')
+    except Exception as error:
+        print(error)
         database.collect.disconnect()    
 
 start()
