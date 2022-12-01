@@ -5,7 +5,7 @@ then
     screen -m -d -S siscomex python3 controle_acesso.py
     screen -m -d -S credenciamento python3 credenciamento_pessoas.py
     cd ../api
-    screen -m -d -S api yarn start.py
+    screen -m -d -S api yarn start
 fi
 
 if [[ $1 ]]
@@ -21,6 +21,6 @@ then
         screen -m -d -S siscomex python3 controle_acesso.py
         screen -m -d -S credenciamento python3 credenciamento_pessoas.py
         cd ../api
-        screen -m -d -S api yarn start.py
+        screen -m -d -S api yarn start
     fi
 fi
