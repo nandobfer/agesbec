@@ -27,11 +27,11 @@ def collectCredenciamento():
             if not funcionario.isProcessed():
                 funcionario.process()
 
-            if funcionarios.index(item) > 0 and funcionarios.index(item) % 100 == 0:
+            if funcionarios.index(item) > 0 and funcionarios.index(item) % 20 == 0:
                 print()
-                print(f"""sleeping until {datetime.now() + timedelta(minutes=60)}.""")
+                print(f"""sleeping until {datetime.now() + timedelta(seconds=5)}.""")
                 print()
-                sleep(60 * 60)
+                sleep(5)
 
 
     except KeyboardInterrupt:

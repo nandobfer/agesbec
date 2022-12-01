@@ -1,12 +1,12 @@
 {
     "timezone": "-0200",
-    "url": "https://val.portalunico.siscomex.gov.br/recintos-ext/api/ext",
+    "url": "https://portalunico.siscomex.gov.br/recintos-ext/api/ext",
     "authentication" : {
         "key": "HKnrRYUDaydyhfO1YsyeLWptwUMa",
         "secret": "TDe9ecUDEl1Nxu1q33cklyV5Io0a",
         "consumer": "HKnrRYUDaydyhfO1YsyeLWptwUMa:TDe9ecUDEl1Nxu1q33cklyV5Io0a",
         "role-type": "DEPOSIT",
-        "url": "https://val.portalunico.siscomex.gov.br/portal/api/autenticar"
+        "url": "https://portalunico.siscomex.gov.br/portal/api/autenticar"
     },
     "recinto": "8943206",
     "databases": {
