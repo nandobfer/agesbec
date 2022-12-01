@@ -21,9 +21,9 @@ def collectAcessos(saida = False):
     tipo = 'entrada'
     if saida:
         tipo = 'saida'
-        sql = f'SELECT * FROM {config["databases"]["processed_acessos"]["table"]} ORDER BY data_{tipo} DESC, hora_{tipo} DESC LIMIT 20'
+        sql = f'SELECT * FROM {config["databases"]["processed_acessos"]["table"]} ORDER BY data_{tipo} DESC, hora_{tipo} LIMIT 20'
     try:
-        sql = f'SELECT * FROM {config["databases"]["collect_acessos"]["table"]} ORDER BY data_{tipo} DESC, hora_{tipo} DESC'
+        sql = f'SELECT * FROM {config["databases"]["collect_acessos"]["table"]} ORDER BY data_{tipo} DESC, hora_{tipo}'
         acessos = database.collect.query(sql)['results']
         print(len(acessos))
         sleep(5)
