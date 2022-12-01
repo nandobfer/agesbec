@@ -32,11 +32,11 @@ def collectAcessos(saida = False):
             if not acesso.isProcessed(saida = saida):
                 acesso.process(saida = saida)
 
-            if acessos.index(item) > 0 and acessos.index(item) % 100 == 0:
-                print()
-                print(f"""sleeping until {datetime.now() + timedelta(seconds=5)}.""")
-                print()
-                sleep(5)
+            # if acessos.index(item) > 0 and acessos.index(item) % 100 == 0:
+            #     print()
+            #     print(f"""sleeping until {datetime.now() + timedelta(seconds=5)}.""")
+            #     print()
+                # sleep(5)
 
 
     except KeyboardInterrupt:
