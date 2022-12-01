@@ -25,6 +25,7 @@ def collectAcessos(saida = False):
     try:
         sql = f'SELECT * FROM {config["databases"]["collect_acessos"]["table"]} ORDER BY data_{tipo} DESC, hora_{tipo} DESC'
         acessos = database.collect.query(sql)['results']
+        print(acessos)
         for item in acessos:
             acesso = Acesso(item, database)
             if not acesso.isProcessed(saida = saida):
