@@ -2,6 +2,8 @@
 
 if [[ $# == 0 ]]
 then
+    cd /home/suporte/siscomex
+
     screen -X -S siscomex kill
     screen -X -S credenciamento kill
     screen -X -S api kill
@@ -16,6 +18,8 @@ if [[ $1 ]]
 then
     if [[ $1 == '-u' ]]
     then
+        cd /home/suporte/siscomex
+
         screen -X -S siscomex kill
         screen -X -S credenciamento kill
         screen -X -S api kill
