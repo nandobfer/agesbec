@@ -51,7 +51,7 @@ class Funcionario():
         columns = '(codigo, nome, cpf, demitido, status, inclusao)'
         
         sql = f"""UPDATE {processed_db["table"]} SET demitido = 1 WHERE codigo = %s ;"""
-        values = (self.id)
+        values = (self.id,)
         
         try:
             self.database.processed.run(sql, prepared=True, values=values)
